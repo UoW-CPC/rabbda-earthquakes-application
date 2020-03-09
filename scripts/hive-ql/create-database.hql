@@ -1,0 +1,1 @@
+create database if not exists earthquakes comment 'Earthquakes application' location '/user/dkagialis/earthquakes-application/data/hive/database/earthquakes.db';
