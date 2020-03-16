@@ -1,0 +1,1 @@
+select count(id) fro eq group id where id is not 1;
