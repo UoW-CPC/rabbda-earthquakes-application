@@ -1,15 +1,17 @@
 
 #
-save-to-hdfs-path: 'user/dimitriskagialis/earthquakes-application/data/earthquakes-history'
+save-to-hdfs-path: '/app'
 #
-list-of-years:
-  - 2010
-  - 2011
+download-list-of-years:
+#  - 2010
+#  - 2011
 #
-group-of-years:
+download-group-of-years:
   - 2011
   - 2014
 #
-minimum-magnitude: 0
+download-magnitude-over: 0
 #
-overwrite: false
+download-again-historical-data: True
+
+hive-drop-all-tables: false

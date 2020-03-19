@@ -21,6 +21,9 @@ class HDFS:
     @classmethod
     def put(cls,file,path):
         (ret, out, err) = cls.command(['hdfs', 'dfs', '-put', file, path])
+        print ret
+        print out
+        print err
         if ret == 1:
             print "Error while uploading the file to HDFS: "
             print err

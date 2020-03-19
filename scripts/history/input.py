@@ -8,8 +8,9 @@ class Input:
 
     @classmethod
     def getValues(cls, inputArgs):
-        options = "y:f:t:m:p:o"
-        longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "overwrite","hdfs-path="]
+        print "Test",inputArgs
+        options = "y:f:t:m:p:d"
+        longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "download-again","hdfs-path="]
         try:
             opts, args = getopt.getopt(inputArgs, options, longOptions)
         except getopt.GetoptError as err:
@@ -29,6 +30,8 @@ class Input:
         hdfsPathArg = None
 
         for opt, arg in opts:
+            print "opt",opt
+            print "arg",arg
             if opt in ("-p", "--hdfs-path"):
                 if hdfsPathFlag:
                     cls.notUniqueArg()
@@ -59,7 +62,7 @@ class Input:
                 else:
                     magnOverFlag = True
                     magnOverArg = arg
-            elif opt in ("-o", "--overwrite"):
+            elif opt in ("-o", "--download-again"):
                 if overwriteFlag:
                     cls.notUniqueArg()
                 else:
