@@ -1,21 +1,21 @@
-import sys, getopt
+import getopt
 from datetime import datetime
 
 from hdfs import HDFS
-
+from logs import Log
 
 class Input:
 
     @classmethod
     def getValues(cls, inputArgs):
-        print "Test",inputArgs
+        Log.info("input arguments: {}".format(inputArgs))
         options = "y:f:t:m:p:d"
         longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "download-again","hdfs-path="]
         try:
             opts, args = getopt.getopt(inputArgs, options, longOptions)
         except getopt.GetoptError as err:
-            print (str(err))
-            sys.exit(2)
+            Log.error(err)
+            Log.exit()
 
         yearFlag = False
         yearArg = None
@@ -30,8 +30,7 @@ class Input:
         hdfsPathArg = None
 
         for opt, arg in opts:
-            print "opt",opt
-            print "arg",arg
+            Log.info("processing option: {} with arguments: {}".format(opt,arg))
             if opt in ("-p", "--hdfs-path"):
                 if hdfsPathFlag:
                     cls.notUniqueArg()
@@ -69,8 +68,8 @@ class Input:
                     overwriteFlag = True
 
         if hdfsPathFlag is False:
-            print "Input Error. You must specify a valid HDFS path. Exiting the application.."
-            sys.exit(2)
+            Log.exit("Input Error. You must specify a valid HDFS path. Exiting the application..")
+            Log.exit()
         else:
             HDFS.pathValidation(hdfsPathArg)
 
@@ -81,12 +80,12 @@ class Input:
         elif not fromYearFlag and not toYearFlag and yearFlag:
             yearOption = True
         else:
-            print "Input Parameters Error.\r\n" \
+            Log.error("Input Parameters Error.\r\n" \
                   "You must pass parameters in one of the following formats:\r\n" \
                   "Example with a range of values:       '--from-year=2010 --to-year=2020'\r\n" \
                   "Example with a list of unique values: '--year=2010,2011,2012'\r\n" \
-                  "Exiting the application.."
-            sys.exit(2)
+                  "Exiting the application..")
+            Log.exit()
 
         if fromToOption:
             fromYearInt = cls.validateYear(fromYearArg)
@@ -103,8 +102,8 @@ class Input:
 
     @classmethod
     def notUniqueArg(cls):
-        print "Input Error. Can't pass one argument twice. Exiting the application.."
-        sys.exit(2)
+        Log.error("Input Error. Can't pass one argument twice. Exiting the application..")
+        Log.exit()
 
     @classmethod
     def toList(cls, args1, args2):
@@ -120,8 +119,8 @@ class Input:
             fromYear = cls.validateYear(args1)
             toYear = cls.validateYear(args2)
             if fromYear > toYear:
-                print "Input Error. 'from-year' value must be less that 'to-year' value. Exiting the application.."
-                sys.exit(2)
+                Log.error("Input Error. 'from-year' value must be less that 'to-year' value. Exiting the application..")
+                Log.exit()
             else:
                 for year in range(fromYear, toYear + 1):
                     yearsList.append(year)
@@ -136,12 +135,12 @@ class Input:
             if 1900 <= year <= currentYear:
                 return year
             else:
-                sys.exit(2)
+                Log.exit()
         except:
-            print (
+            Log.error(
                 "invalid year input, value: '{}'. You can only pass year values from '1900' to '{}'. Exciting the application..".format(
                     arg, currentYear))
-            sys.exit(2)
+            Log.exit()
 
     @classmethod
     def validateMagnitude(cls, arg):
@@ -150,9 +149,9 @@ class Input:
             if 0 <= magnutide <= 8:
                 return magnutide
             else:
-                sys.exit(2)
+                Log.exit()
         except:
-            print (
+            Log.error(
                 "invalid magnitude input, value: '{}'. You can only pass magnitude values from '0.0' to '8.0'. Exciting the application..".format(
                     arg))
-            sys.exit(2)
+            Log.exit()

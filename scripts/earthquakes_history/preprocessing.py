@@ -22,7 +22,9 @@ class Preprocessing:
             eq_temp.insert(1, eq_month)
             eq_day = eq_str[8:10]
             eq_temp.insert(2, eq_day)
+            eq_date = eq_str[0:10]
+            eq_temp.insert(3,eq_date)
             eq_time = eq_str[11:19]
-            eq_temp.insert(3, eq_time)
+            eq_temp.insert(4, eq_time)
             eq_list.append(eq_temp)
         return eq_list

@@ -69,9 +69,3 @@ class Configuration:
 
         return history_args, hive_args
 
-    @classmethod
-    def Build_command_args(cls, history_args):
-        command_args = []
-        for arg, value in history_args.items():
-            command_args.append(arg + value)
-        return command_args

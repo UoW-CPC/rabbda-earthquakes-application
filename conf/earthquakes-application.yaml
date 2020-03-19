@@ -3,15 +3,16 @@
 save-to-hdfs-path: '/app'
 #
 download-list-of-years:
-#  - 2010
-#  - 2011
-#
-download-group-of-years:
-  - 2011
+  - 2010
   - 2014
+  - 2015
 #
-download-magnitude-over: 0
+#download-group-of-years:
+#  - 2011
+#  - 2014
 #
-download-again-historical-data: True
+#download-magnitude-over: 0
+#
+#download-again-historical-data: True
 
-hive-drop-all-tables: false
+#hive-drop-all-tables: false
