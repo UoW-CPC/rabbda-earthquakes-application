@@ -1,0 +1,10 @@
+
+set hive.input.format = org.apache.hadoop.hive.ql.io.BucketizeHiveInputFormat;
+
+set hive.optimize.bucketmapjoin  = true;
+
+set hive.optimize.bucketmapjoin.sortedmerge  = true;
+
+
+make inner join not outer join sos!!!
+ example find where the position is...
