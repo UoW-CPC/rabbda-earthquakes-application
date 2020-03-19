@@ -1,7 +1,6 @@
 import csv
 import eventlet
 import requests
-from datetime import timedelta, date
 
 
 class Acquisition:

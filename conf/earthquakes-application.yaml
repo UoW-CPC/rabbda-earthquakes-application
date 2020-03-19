@@ -1,0 +1,15 @@
+
+#
+save-to-hdfs-path: 'user/dimitriskagialis/earthquakes-application/data/earthquakes-history'
+#
+list-of-years:
+  - 2010
+  - 2011
+#
+group-of-years:
+  - 2011
+  - 2014
+#
+minimum-magnitude: 0
+#
+overwrite: false

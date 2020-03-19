@@ -7,7 +7,7 @@ class Database:
     @classmethod
     def queryInput(cls, yearsTempList, magnitudeOver, overwrite):
         years = []
-        db = TinyDB('../yearsdb.json')
+        db = TinyDB('history_db.json')
         for year in yearsTempList:
             now = str(datetime.utcnow())
             if overwrite:
