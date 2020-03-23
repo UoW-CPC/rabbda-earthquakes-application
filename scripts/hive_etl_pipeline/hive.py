@@ -63,13 +63,3 @@ class Hive:
         print out
         print err
 
-    @classmethod
-    def load_earthquakes_data(cls):
-        Log.info("Loading data to hive:")
-        (ret, out, err) = System.command(['hive', '-f', '../hive_ql/create-tables.hql'])
-        Log.info("return, {}".format(ret))
-        Log.info("output, {}".format(out))
-        Log.info("error, {}".format(err))
-        print ret
-        print out
-        print err
