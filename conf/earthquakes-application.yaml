@@ -1,6 +1,6 @@
 
 #
-save-to-hdfs-path: '/app'
+hdfs-path: '/app'
 #
 download-list-of-years:
   - 2010

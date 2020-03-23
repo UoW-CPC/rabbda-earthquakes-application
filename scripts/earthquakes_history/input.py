@@ -61,14 +61,14 @@ class Input:
                 else:
                     magnOverFlag = True
                     magnOverArg = arg
-            elif opt in ("-o", "--download-again"):
+            elif opt in ("-d", "--download-again"):
                 if overwriteFlag:
                     cls.notUniqueArg()
                 else:
                     overwriteFlag = True
 
         if hdfsPathFlag is False:
-            Log.exit("Input Error. You must specify a valid HDFS path. Exiting the application..")
+            Log.error("Input Error. You must specify a valid HDFS path. Exiting the application..")
             Log.exit()
         else:
             HDFS.pathValidation(hdfsPathArg)

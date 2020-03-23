@@ -25,8 +25,9 @@ class Configuration:
         history_args = {}
         hive_args = {}
         for config, values in configuration.items():
-            if config == 'save-to-hdfs-path':
+            if config == 'hdfs-path':
                 history_args['--hdfs-path='] = values
+                hive_args['--hdfs-path='] = values
             elif config == 'download-list-of-years':
                 list_of_years = ""
                 if values is not None:
