@@ -18,6 +18,11 @@ def main():
     args = inputArgs[1:]
     StoreData.createFolder()
     yearsTempList, magnitudeOver, download_again = Input.getValues(args)
+    path = HDFS.getPath()
+    Log.info("Uploading cities and seismographic stations to HDFS..")
+    HDFS.put('../../data/cities.csv', path)
+    HDFS.put('../../data/seismographic-stations.csv', path)
+    Log.info("Data acquisition starts..")
     years = Database.QueryInput(yearsTempList, magnitudeOver, download_again)
     Log.info("Requesting earthquakes data with magnitude over {}, for years: {}".format(magnitudeOver, years))
     for year in years:
@@ -37,7 +42,7 @@ def main():
                 Log.error("Error while processing a Request:")
                 Log.error(error)
         Log.info("Data acquisition for  year {} finished".format(year))
-        path = HDFS.getPath()
+
         HDFS.put('../../data/earthquakes-history/earthquakes{}mag{}.csv'.format(year, magnitudeOver), path)
     Log.info('---------------------')
     Log.info('Download process ends')

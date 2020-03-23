@@ -38,7 +38,6 @@ class HDFS:
             Log.exit()
         else:
             Log.info("Valid HDFS path")
-            Log.info("Data acquisition starts..")
 
     @classmethod
     def getPath(cls):
