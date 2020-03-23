@@ -18,8 +18,10 @@ def main():
     if drop_tables:
         Hive.clear_tables()
     Hive.create_tables()
+    Hive.load_cities()
+    Hive.load_seismographic_stations()
     for file in files:
-        Hive.load
+        Hive.
 
 
 
