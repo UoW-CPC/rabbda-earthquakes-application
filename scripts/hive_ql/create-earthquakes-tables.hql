@@ -2,39 +2,60 @@ set hive.exec.dynamic.partition = true;
 set hive.exec.dynamic.partition.mode = nonstrict;
 set hive.enforce.bucketing = true;
 
-create temporary table if not exists earthquakes_load
+
+
+  ALTER TABLE cities set serdeproperties('field.delim'=',');
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS seismographic_stations
 (
-  year int,
-  month int,
-  day int,
-  y_m_d date,
-  time string,
-  date_time string,
+  station_code string,
+  station_name string,
+  country string,
   latitude double,
   longitude double,
-  depth double,
-  mag double,
-  magType string,
-  nst string,
-  gap string,
-  dmin string,
-  rms string,
-  net string,
-  id string,
-  updated string,
-  place string,
-  type string,
-  horizontalError string,
-  depthError string,
-  magError string,
-  magNst string,
-  status string,
-  locationSource string,
-  magSource string
+  datacenter string
   )
-  set SERDEPROPERTIES ('field.delim'=',') clustered by (mag) sorted by (y_m_d) into 4 buckets;
+  CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
 
-describe table
+  ALTER TABLE cities set serdeproperties('field.delim'=',');
+
+--create temporary table if not exists earthquakes_load
+--(
+--  year int,
+--  month int,
+--  day int,
+--  y_m_d date,
+--  time string,
+--  date_time string,
+--  latitude double,
+--  longitude double,
+--  depth double,
+--  mag double,
+--  magType string,
+--  nst string,
+--  gap string,
+--  dmin string,
+--  rms string,
+--  net string,
+--  id string,
+--  updated string,
+--  place string,
+--  type string,
+--  horizontalError string,
+--  depthError string,
+--  magError string,
+--  magNst string,
+--  status string,
+--  locationSource string,
+--  magSource string
+--  )
+--  set SERDEPROPERTIES ('field.delim'=',') clustered by (mag) sorted by (y_m_d) into 4 buckets;
+
+--describe table
 
 
 --create table if not exists two like one;

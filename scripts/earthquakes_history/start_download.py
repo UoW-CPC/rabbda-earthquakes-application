@@ -19,12 +19,12 @@ def main():
     StoreData.createFolder()
     yearsTempList, magnitudeOver, download_again = Input.getValues(args)
     path = HDFS.getPath()
-    Log.info("Data acquisition starts..")
+    Log.info("CreateDB acquisition starts..")
     years = Database.QueryInput(yearsTempList, magnitudeOver, download_again)
     Log.info("Requesting earthquakes data with magnitude over {}, for years: {}".format(magnitudeOver, years))
     for year in years:
         Log.info("Processing year: {}".format(year))
-        Log.info("Data acquisition starts.")
+        Log.info("CreateDB acquisition starts.")
         firstDate = date(year, 1, 1)
         lastDate = date(year, 12, 31)
         for d in dateRange(firstDate, lastDate):
@@ -38,7 +38,7 @@ def main():
             except Exception as error:
                 Log.error("Error while processing a Request:")
                 Log.error(error)
-        Log.info("Data acquisition for  year {} finished".format(year))
+        Log.info("CreateDB acquisition for  year {} finished".format(year))
 
         HDFS.put('../../data/earthquakes-history/earthquakes{}mag{}.csv'.format(year, magnitudeOver), path)
     Log.info('---------------------')

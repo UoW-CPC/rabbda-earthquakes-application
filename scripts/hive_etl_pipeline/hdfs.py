@@ -39,7 +39,6 @@ class HDFS:
             Log.exit()
         else:
             Log.info("Valid HDFS path")
-            Log.info("Files to be proccessed:")
             lines = out.splitlines()
             for line in lines:
                 line_split = line.split(' ')
@@ -52,5 +51,9 @@ class HDFS:
 
     @classmethod
     def getFiles(cls):
-        cls.files.pop(0)
+        try:
+            cls.files.pop(0)
+        except Exception as exc:
+            Log.warning('No files to be processed')
+            Log.error(exc)
         return cls.files
