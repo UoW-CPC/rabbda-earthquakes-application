@@ -11,7 +11,7 @@ download-list-of-years:
 #  - 2011
 #  - 2014
 #
-#download-magnitude-over: 0
+download-magnitude-over: 8
 #
 #download-again-historical-data: True
 
