@@ -4,19 +4,14 @@ USE earthquakes;
 DROP TABLE if EXISTS seismographic_stations_stage;
 
 -- step 1-2 create staging table
-CREATE TABLE IF NOT EXISTS seismographic_stations_stage
-(
-  city string,
-  city_ascii string,
+CREATE TABLE  NOT EXISTS seismographic_stations_stage
+ (
+  station_code string,
+  station_name string,
+  country string,
   latitude double,
   longitude double,
-  country string,
-  iso2 string,
-  iso3 string,
-  admin_name string,
-  capital string,
-  population int,
-  id string
+  datacenter string
   )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 

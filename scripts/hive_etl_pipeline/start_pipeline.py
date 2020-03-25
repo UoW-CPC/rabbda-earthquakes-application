@@ -24,7 +24,7 @@ def main():
         HDFS.put('../../data/hive-etl-pipeline/cities.csv', path)
         HDFS.put('../../data/hive-etl-pipeline/seismographic-stations.csv', path)
         Hive.load_cities(path)
-        #Hive.load_seismographic_stations(path)
+        Hive.load_seismographic_stations(path)
     Log.info("Files to be proccessed:")
     Log.info("Files to be imported in Hive: {}".format(files))
     if drop_tables:
