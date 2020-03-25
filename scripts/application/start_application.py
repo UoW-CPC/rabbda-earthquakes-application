@@ -36,10 +36,10 @@ def main():
             ['python', '../earthquakes_history/start_download.py', hdfs_path, year, mangitude_over, download_again])
     elif mangitude_over is not "" and download_again is "" and year is not "":
         (ret, out, err) = System.command(
-            ['python', '../earthquakes_history/start_download.py', hdfs_path, year, download_again])
+            ['python', '../earthquakes_history/start_download.py', hdfs_path, year, mangitude_over])
     elif mangitude_over is "" and download_again is not "" and year is not "":
         (ret, out, err) = System.command(
-            ['python', '../earthquakes_history/start_download.py', hdfs_path, year, mangitude_over])
+            ['python', '../earthquakes_history/start_download.py', hdfs_path, year, download_again])
     elif mangitude_over is "" and download_again is "" and year is not "":
         (ret, out, err) = System.command(
             ['python', '../earthquakes_history/start_download.py', hdfs_path, year])
@@ -48,14 +48,16 @@ def main():
             ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year, mangitude_over, download_again])
     elif mangitude_over is not "" and download_again is "" and from_year is not "":
         (ret, out, err) = System.command(
-            ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year, download_again])
+            ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year, mangitude_over])
     elif mangitude_over is "" and download_again is not "" and from_year is not "":
         (ret, out, err) = System.command(
-            ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year, mangitude_over])
+            ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year, download_again])
     elif mangitude_over is "" and download_again is "" and from_year is not "":
         (ret, out, err) = System.command(
             ['python', '../earthquakes_history/start_download.py', hdfs_path, from_year,to_year])
     Log.info("Download process finished. For more information see 'earthquakes-history.log'")
+    for arg, value in hive_args.items():
+        print arg,value
     Log.info('ETL pipeline: Start processing the data through hive')
     (ret, out, err) = System.command(['python', '../hive_etl_pipeline/start_pipeline.py', hdfs_path])
     Log.info("ETL pipeline: Finish processing the data.For more information see 'hive-etl-pipeline.log'")
