@@ -5,7 +5,7 @@ set hive.exec.dynamic.partition.mode = nonstrict;
 set hive.enforce.bucketing = true;
 
 USE earthquakes;
-DROP TABLE if EXISTS seismographic_stations;
+DROP TABLE IF EXISTS seismographic_stations;
 
 -- step 1-2 create final table
 CREATE TABLE IF NOT EXISTS seismographic_stations
@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS seismographic_stations
 
 -- step 2-2 import data into final table
 INSERT INTO seismographic_stations SELECT * FROM seismographic_stations_stage;
+
+DROP TABLE IF EXISTS seismographic_stations_stage;

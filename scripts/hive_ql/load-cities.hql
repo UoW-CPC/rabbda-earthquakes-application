@@ -26,3 +26,5 @@ CREATE TABLE IF NOT EXISTS cities
 
 -- step 2-2 import data into final table
 INSERT INTO cities SELECT * FROM cities_stage;
+
+DROP TABLE IF EXISTS cities_stage;

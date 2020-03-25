@@ -67,7 +67,7 @@ class Hive:
 
 
     @classmethod
-    def load_seismographic_stations(cls, path):
+    def load_seismographic_stations1(cls, path):
         hivevar = "path='" + path + "/seismographic-stations.csv'"
         print hivevar
         Log.info("Loading seismographic stations data to hive:")

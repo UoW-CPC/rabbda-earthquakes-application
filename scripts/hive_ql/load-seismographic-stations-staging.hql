@@ -1,10 +1,10 @@
 -- create SEISMOGRAPHIC STATIONS staging TABLE and load data
 
 USE earthquakes;
-DROP TABLE if EXISTS seismographic_stations_stage;
+DROP TABLE IF EXISTS seismographic_stations_stage;
 
 -- step 1-2 create staging table
-CREATE TABLE  NOT EXISTS seismographic_stations_stage
+CREATE TABLE IF NOT EXISTS seismographic_stations_stage
  (
   station_code string,
   station_name string,
