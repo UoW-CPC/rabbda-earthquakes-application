@@ -1,6 +1,7 @@
 -- create CITIES staging TABLE and load data
 
 USE earthquakes;
+DROP TABLE if EXISTS cities_stage;
 
 -- step 1-2 create staging table
 CREATE TABLE IF NOT EXISTS cities_stage

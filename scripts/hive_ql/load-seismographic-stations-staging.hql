@@ -1,9 +1,10 @@
--- create CITIES staging TABLE and load data
+-- create SEISMOGRAPHIC STATIONS staging TABLE and load data
 
 USE earthquakes;
+DROP TABLE if EXISTS seismographic_stations_stage;
 
 -- step 1-2 create staging table
-CREATE TABLE IF NOT EXISTS cities_stage
+CREATE TABLE IF NOT EXISTS seismographic_stations_stage
 (
   city string,
   city_ascii string,
@@ -20,4 +21,4 @@ CREATE TABLE IF NOT EXISTS cities_stage
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
 -- step 2-2 load data into staging table
-LOAD DATA INPATH ${path} OVERWRITE INTO TABLE cities_stage;
+LOAD DATA INPATH ${path} OVERWRITE INTO TABLE seismographic_stations_stage;

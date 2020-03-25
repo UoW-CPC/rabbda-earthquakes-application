@@ -5,6 +5,7 @@ set hive.exec.dynamic.partition.mode = nonstrict;
 set hive.enforce.bucketing = true;
 
 USE earthquakes;
+DROP TABLE if EXISTS cities;
 
 -- step 1-2 create final table
 CREATE TABLE IF NOT EXISTS cities
