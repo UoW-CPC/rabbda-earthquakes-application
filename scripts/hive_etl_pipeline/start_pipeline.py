@@ -12,31 +12,29 @@ def main():
     Log.info('------------------------')
     inputArgs = sys.argv
     args = inputArgs[1:]
-    drop_tables = Input.getValues(args)
-    files = HDFS.getFiles()
-    create = Database.CreateDB()
-    upload = Database.UploadStaticData()
+    drop_earthquakes_tables = Input.getValues(args)
+    earthquakes_files = HDFS.getFiles()
+    create_DB = Database.CreateDB()
+    create_earthquakes_tables = Database.CreateEarthquakesTables()
+    upload_static_data = Database.UploadStaticData()
     path = HDFS.getPath()
-    if create:
-        Hive.create_database(path)
-    if upload:
+    if create_DB:
+        Hive.createDB(path)
+    if create_earthquakes_tables:
+        Hive.createEarthquakesTables()
+    if upload_static_data:
         Log.info("Uploading cities and seismographic stations to HDFS..")
         HDFS.put('../../data/hive-etl-pipeline/cities.csv', path)
         HDFS.put('../../data/hive-etl-pipeline/seismographic-stations.csv', path)
-        Hive.load_cities(path)
-        Hive.load_seismographic_stations(path)
+        Hive.loadCities(path)
+        Hive.loadSeismographicStations(path)
     Log.info("Files to be proccessed:")
-    Log.info("Files to be imported in Hive: {}".format(files))
-    if drop_tables:
-        Hive.clear_tables()
-    """
-    Hive.create_tables()
-    if upload:
-        Hive.load_cities(path)
-        Hive.load_seismographic_stations(path)
-    for file in files:
-        Hive.load_earthquakes_data(path,file)
-    """
+    Log.info("Files to be imported in Hive: {}".format(earthquakes_files))
+    if drop_earthquakes_tables:
+        Hive.clearEarthquakesTables()
+
+    for file in earthquakes_files:
+        Hive.loadEarthquakesData(file)
     Log.info('------------------------')
     Log.info('Hive ETL pipeline ends')
     Log.info('------------------------')

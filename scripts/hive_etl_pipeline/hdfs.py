@@ -43,7 +43,8 @@ class HDFS:
             for line in lines:
                 line_split = line.split(' ')
                 line_len = len(line_split)
-                cls.files.append(line_split[line_len - 1])
+                if line_split[line_len - 1] != '/app/earthquakes.db':
+                    cls.files.append(line_split[line_len - 1])
 
     @classmethod
     def getPath(cls):

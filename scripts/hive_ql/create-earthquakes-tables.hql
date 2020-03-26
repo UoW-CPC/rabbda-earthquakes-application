@@ -2,61 +2,82 @@ set hive.exec.dynamic.partition = true;
 set hive.exec.dynamic.partition.mode = nonstrict;
 set hive.enforce.bucketing = true;
 
+-- Create EARTHQUAKES related tables
 
 
-  ALTER TABLE cities set serdeproperties('field.delim'=',');
+-- create EARTHQUAKES staging TABLE and load data
 
+USE earthquakes;
+DROP TABLE IF EXISTS earthquakes_stage;
 
-
-
-
-CREATE TABLE IF NOT EXISTS seismographic_stations
+-- step 1-* create staging table
+CREATE TABLE IF NOT EXISTS earthquakes_stage
 (
-  station_code string,
-  station_name string,
-  country string,
+  year int,
+  month int,
+  day int,
+  y_m_d date,
+  time string,
+  date_time string,
   latitude double,
   longitude double,
-  datacenter string
+  depth double,
+  mag double,
+  magType string,
+  nst string,
+  gap string,
+  dmin string,
+  rms string,
+  net string,
+  id string,
+  updated string,
+  place string,
+  country string,
+  type string,
+  horizontalError string,
+  depthError string,
+  magError string,
+  magNst string,
+  status string,
+  locationSource string,
+  magSource string
   )
-  CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
-  ALTER TABLE cities set serdeproperties('field.delim'=',');
+DROP TABLE IF EXISTS earthquakes;
 
---create temporary table if not exists earthquakes_load
---(
---  year int,
---  month int,
---  day int,
---  y_m_d date,
---  time string,
---  date_time string,
---  latitude double,
---  longitude double,
---  depth double,
---  mag double,
---  magType string,
---  nst string,
---  gap string,
---  dmin string,
---  rms string,
---  net string,
---  id string,
---  updated string,
---  place string,
---  type string,
---  horizontalError string,
---  depthError string,
---  magError string,
---  magNst string,
---  status string,
---  locationSource string,
---  magSource string
---  )
---  set SERDEPROPERTIES ('field.delim'=',') clustered by (mag) sorted by (y_m_d) into 4 buckets;
-
---describe table
-
+-- step 2-* create final table
+CREATE TABLE IF NOT EXISTS earthquakes
+ (
+  month int,
+  day int,
+  y_m_d date,
+  time string,
+  date_time string,
+  latitude double,
+  longitude double,
+  depth double,
+  mag double,
+  magType string,
+  nst string,
+  gap string,
+  dmin string,
+  rms string,
+  net string,
+  id string,
+  updated string,
+  place string,
+  country string,
+  type string,
+  horizontalError string,
+  depthError string,
+  magError string,
+  magNst string,
+  status string,
+  locationSource string,
+  magSource string
+  )
+  PARTITIONED BY (mag_group int, year int) CLUSTERED BY (country) SORTED BY (mag) into 4 buckets STORED AS orc;
 
 --create table if not exists two like one;
 --create external table three location '/user/test/';
