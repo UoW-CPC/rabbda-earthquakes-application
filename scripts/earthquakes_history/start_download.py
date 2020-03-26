@@ -32,8 +32,9 @@ def main():
             end = (d + timedelta(days=1)).strftime("%Y-%m-%d") + "T00:00:00.000Z"
             try:
                 eq_list_raw = Acquisition.Request(start, end, magnitudeOver)
-                eq_list_temp = Preprocessing.cleanHeaders(eq_list_raw)
-                eq_list = Preprocessing.splitDateTime(eq_list_temp)
+                eq_list_no_headers = Preprocessing.cleanHeaders(eq_list_raw)
+                eq_list_split_date_time = Preprocessing.splitDateTime(eq_list_no_headers)
+                eq_list = Preprocessing.checkCountry(eq_list_split_date_time)
                 StoreData.toFile(eq_list, year, d,magnitudeOver)
             except Exception as error:
                 Log.error("Error while processing a Request:")
