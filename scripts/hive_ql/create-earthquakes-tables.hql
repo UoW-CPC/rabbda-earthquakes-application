@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS earthquakes
  (
   month int,
   day int,
-  y_m_d date,
+  y_m_d string,
   time string,
   date_time string,
   latitude double,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS earthquakes
   locationSource string,
   magSource string
   )
-  PARTITIONED BY (mag_group int, year int) CLUSTERED BY (country) SORTED BY (mag) into 4 buckets STORED AS orc;
+  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (mag) into 4 buckets STORED AS orc;
 
 --create table if not exists two like one;
 --create external table three location '/user/test/';
