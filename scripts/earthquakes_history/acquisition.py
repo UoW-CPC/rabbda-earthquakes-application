@@ -10,7 +10,7 @@ class Acquisition:
     @classmethod
     def Request(cls, start, end, magnitude_over):
         eventlet.monkey_patch()
-        with eventlet.Timeout(60):
+        with eventlet.Timeout(600):
             try:
                 with requests.Session() as s:
                     download = s.get(
