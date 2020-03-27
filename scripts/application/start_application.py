@@ -60,7 +60,7 @@ def main():
         print arg,value
     Log.info('ETL pipeline: Start processing the data through hive')
     (ret, out, err) = System.command(['python', '../hive_etl_pipeline/start_pipeline.py', hdfs_path])
-    Log.info("ETL pipeline: Finish processing the data.For more information see 'hive-etl-pipeline.log'")
+    Log.info("ETL pipeline: Finish processing the data. For more information see 'hive-etl-pipeline.log'")
     Log.info('------------------------------')
     Log.info('Earthquakes application ends')
     Log.info('------------------------------')
