@@ -32,9 +32,13 @@ def main():
     Log.info("Files to be imported in Hive: {}".format(earthquakes_files))
     if drop_earthquakes_tables:
         Hive.clearEarthquakesTables()
-
     for file in earthquakes_files:
         Hive.loadEarthquakesData(file)
+        Hive.distanceToCities()
+        Hive.distanceToClosestCity()
+        Hive.distanceToSeismographicStations()
+        Hive.distanceToClosestSeismographicStation()
+        Hive.produceSeismographs()
     Log.info('------------------------')
     Log.info('Hive ETL pipeline ends')
     Log.info('------------------------')

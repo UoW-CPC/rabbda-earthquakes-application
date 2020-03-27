@@ -4,13 +4,12 @@ set hive.enforce.bucketing = true;
 
 -- Create EARTHQUAKES related tables
 
-
--- create EARTHQUAKES staging TABLE and load data
-
 USE earthquakes;
+
+-- step 1-* create EARTHQUAKES staging TABLE
+
 DROP TABLE IF EXISTS earthquakes_stage;
 
--- step 1-* create staging table
 CREATE TABLE IF NOT EXISTS earthquakes_stage
 (
   year int,
@@ -44,9 +43,46 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage
   )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
+-- step 2-* create EARTHQUAKES staging TABLE as ORC
+
+DROP TABLE IF EXISTS earthquakes_stage_orc;
+
+CREATE TABLE IF NOT EXISTS earthquakes_stage_orc
+ (
+  month int,
+  day int,
+  y_m_d string,
+  time string,
+  date_time string,
+  latitude double,
+  longitude double,
+  depth double,
+  mag double,
+  magType string,
+  nst string,
+  gap string,
+  dmin string,
+  rms string,
+  net string,
+  id string,
+  updated string,
+  place string,
+  country string,
+  type string,
+  horizontalError string,
+  depthError string,
+  magError string,
+  magNst string,
+  status string,
+  locationSource string,
+  magSource string
+  )
+  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
+
+-- step 3-* create EARTHQUAKES final TABLE as ORC
+
 DROP TABLE IF EXISTS earthquakes;
 
--- step 2-* create final table
 CREATE TABLE IF NOT EXISTS earthquakes
  (
   month int,
@@ -77,7 +113,7 @@ CREATE TABLE IF NOT EXISTS earthquakes
   locationSource string,
   magSource string
   )
-  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (mag) into 4 buckets STORED AS orc;
+  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
 
 --create table if not exists two like one;
 --create external table three location '/user/test/';

@@ -20,9 +20,6 @@ class Hive:
         Log.info("return, {}".format(ret))
         Log.info("output, {}".format(out))
         Log.error("error, {}".format(err))
-        print ret
-        print out
-        print err
 
     @classmethod
     def loadCities(cls, path):
@@ -67,13 +64,9 @@ class Hive:
     @classmethod
     def loadEarthquakesData(cls, file):
         hivevar = "path='" + file + "'"
-        print hivevar
         Log.info("Loading earthquakes data to hive:")
         Log.info(file)
         (ret, out, err) = System.command(['hive','-hivevar', hivevar, '-f', '../hive_ql/load-earthquakes.hql'])
         Log.info("return, {}".format(ret))
         Log.info("output, {}".format(out))
         Log.error("error, {}".format(err))
-        print ret
-        print out
-        print err

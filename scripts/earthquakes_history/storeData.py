@@ -12,7 +12,7 @@ class StoreData:
                 count = count + 1
                 eq_str = ",".join(eq)
                 writer.write("%s\r\n" % (eq_str))
-            Log.info("CreateDB for {} stored to file, records: {}".format(d, count))
+            Log.info("Earthquakes for {} stored to file, records: {}".format(d, count))
 
     @classmethod
     def createFolder(cls):
