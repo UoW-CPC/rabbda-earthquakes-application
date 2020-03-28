@@ -13,7 +13,7 @@ TRUNCATE TABLE earthquakes_stage;
 LOAD DATA INPATH ${path} OVERWRITE INTO TABLE earthquakes_stage;
 
 TRUNCATE TABLE earthquakes_stage_orc;
-INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(mag_group, year)
+INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(magnitude_group, year)
  SELECT
   month,
   day,
@@ -23,8 +23,8 @@ INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(mag_group, year)
   latitude,
   longitude,
   depth,
-  mag,
-  magType,
+  magnitude,
+  magnitude_type,
   nst,
   gap,
   dmin,
@@ -35,22 +35,22 @@ INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(mag_group, year)
   place,
   country,
   type,
-  horizontalError,
-  depthError,
-  magError,
-  magNst,
+  horizontal_error,
+  depth_error,
+  magnitude_error,
+  magnitude_nst,
   status,
-  locationSource,
-  magSource,
+  location_source,
+  magnitude_source,
   CASE
-    WHEN mag < 2 THEN 'low'
-    WHEN mag >= 2 AND mag < 4 THEN 'medium'
-    WHEN mag >= 4 AND mag < 6 THEN 'high'
-    WHEN mag >= 6 THEN 'extreme'
+    WHEN magnitude < 2 THEN 'low'
+    WHEN magnitude >= 2 AND magnitude < 4 THEN 'medium'
+    WHEN magnitude >= 4 AND magnitude < 6 THEN 'high'
+    WHEN magnitude >= 6 THEN 'extreme'
     ELSE NULL
-  END as mag_group,
+  END as magnitude_group,
   year
   FROM earthquakes_stage;
 
-INSERT INTO earthquakes PARTITION(mag_group, year) SELECT * FROM earthquakes_stage_orc;
+INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage_orc;
 

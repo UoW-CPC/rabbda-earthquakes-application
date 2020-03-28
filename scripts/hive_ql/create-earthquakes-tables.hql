@@ -6,7 +6,7 @@ set hive.enforce.bucketing = true;
 
 USE earthquakes;
 
--- step 1-* create EARTHQUAKES staging TABLE
+-- step 1-10 create EARTHQUAKES staging TABLE
 
 DROP TABLE IF EXISTS earthquakes_stage;
 
@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage
   latitude double,
   longitude double,
   depth double,
-  mag double,
-  magType string,
+  magnitude double,
+  magnitude_type string,
   nst string,
   gap string,
   dmin string,
@@ -33,17 +33,17 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage
   place string,
   country string,
   type string,
-  horizontalError string,
-  depthError string,
-  magError string,
-  magNst string,
+  horizontal_error string,
+  depth_error string,
+  magnitude_error string,
+  magnitude_nst string,
   status string,
-  locationSource string,
-  magSource string
+  location_source string,
+  magnitude_source string
   )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
--- step 2-* create EARTHQUAKES staging TABLE as ORC
+-- step 2-10 create EARTHQUAKES staging TABLE as ORC
 
 DROP TABLE IF EXISTS earthquakes_stage_orc;
 
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage_orc
   latitude double,
   longitude double,
   depth double,
-  mag double,
-  magType string,
+  magnitude double,
+  magngitude_type string,
   nst string,
   gap string,
   dmin string,
@@ -69,17 +69,17 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage_orc
   place string,
   country string,
   type string,
-  horizontalError string,
-  depthError string,
-  magError string,
-  magNst string,
+  horizontal_error string,
+  depth_error string,
+  magnitude_error string,
+  magnitude_nst string,
   status string,
-  locationSource string,
-  magSource string
+  location_source string,
+  magnitude_source string
   )
-  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
+  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc;
 
--- step 3-* create EARTHQUAKES final TABLE as ORC
+-- step 3-10 create EARTHQUAKES final TABLE as ORC
 
 DROP TABLE IF EXISTS earthquakes;
 
@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS earthquakes
   latitude double,
   longitude double,
   depth double,
-  mag double,
-  magType string,
+  magnitude double,
+  magnitude_type string,
   nst string,
   gap string,
   dmin string,
@@ -105,31 +105,209 @@ CREATE TABLE IF NOT EXISTS earthquakes
   place string,
   country string,
   type string,
-  horizontalError string,
-  depthError string,
-  magError string,
-  magNst string,
+  horizontal_error string,
+  depth_error string,
+  magnitude_error string,
+  magnitude_nst string,
   status string,
-  locationSource string,
-  magSource string
+  location_source string,
+  magnitude_source string
   )
-  PARTITIONED BY (mag_group string, year int) CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
+  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc;
 
---create table if not exists two like one;
---create external table three location '/user/test/';
---create temporary table four;
---create external table if not exists cities location '/hdfs' set serdeproperties('field.delim'=',')  clustered by latutude into 4 buckets;
---create external table if not exists seismographic-stations location '/hdfs' set serdeproperties('field.delim'=',')  clustered by (latutude) sorted by (country) into 4 buckets;
---create external table if not exists earthquakes-full location '/hdfs' set serdeproperties('field.delim'=',') partitioned by (year int, magn_group) clustered by latutude into 4 buckets;
---create view if not exists earthquakes-view;
---create external table if not exists earthquakes-to-all-cities location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-closest-city location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-all-stations location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-closest-station location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-results location '/hdfs' set serdeproperties('field.delim'=',') partitioned by (year int, station string);
---create external table if not exists earthquakes-per-country location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-year location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-id location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-location location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-magn location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-magn-groups location '/hdfs' set serdeproperties('field.delim'=',');
+-- step 4-10 create DISTANCE TO NEAR CITIES staging TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_cities_stage;
+
+CREATE TABLE IF NOT EXISTS distance_to_cities_stage
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  city_name string,
+  city_latitude double,
+  city_longitude double,
+  city_country string,
+  city_population int,
+  city_distance double
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 5-10 create DISTANCE TO NEAR CITIES final TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_cities;
+
+CREATE TABLE IF NOT EXISTS distance_to_cities
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  city_name string,
+  city_latitude double,
+  city_longitude double,
+  city_country string,
+  city_population int,
+  city_distance double
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 6-10 create DISTANCE TO CLOSEST CITY staging TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_city_closest_stage;
+
+CREATE TABLE IF NOT EXISTS distance_to_city_closest_stage
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  city_name string,
+  city_latitude double,
+  city_longitude double,
+  city_country string,
+  city_population int,
+  city_distance double
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 7-10 create DISTANCE TO NEAR SEISMOGRAPHIC STATIONS staging TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_stations_stage;
+
+CREATE TABLE IF NOT EXISTS distance_to_stations_stage
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  station_code string,
+  station_name string,
+  station_country string,
+  station_latitude double,
+  station_longitude double,
+  station_datacenter string,
+  station_distance double,
+  station_seismograph string
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 8-10 create DISTANCE TO NEAR SEISMOGRAPHIC STATIONS final TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_stations;
+
+CREATE TABLE IF NOT EXISTS distance_to_stations
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  station_code string,
+  station_name string,
+  station_country string,
+  station_latitude double,
+  station_longitude double,
+  station_datacenter string,
+  station_distance double,
+  station_seismograph string
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 9-10 create DISTANCE TO CLOSEST SEISMOGRAPHIC STATIONS staging TABLE as ORC
+
+DROP TABLE IF EXISTS distance_to_station_closest_stage;
+
+CREATE TABLE IF NOT EXISTS distance_to_station_closest_stage
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  station_code string,
+  station_name string,
+  station_country string,
+  station_latitude double,
+  station_longitude double,
+  station_datacenter string,
+  station_distance double,
+  station_seismograph string
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
+-- step 10-10 create OUTPUT TABLE as ORC
+
+DROP TABLE IF EXISTS output;
+
+CREATE TABLE IF NOT EXISTS output
+(
+  eq_id string,
+  eq_month int,
+  eq_day int,
+  eq_y_m_d string,
+  eq_time string,
+  eq_date_time string,
+  eq_latitude double,
+  eq_longitude double,
+  eq_magnitude double,
+  eq_place string,
+  eq_country string,
+  city_name string,
+  city_latitude double,
+  city_longitude double,
+  city_country string,
+  city_population int,
+  city_distance double
+  station_code string,
+  station_name string,
+  station_country string,
+  station_latitude double,
+  station_longitude double,
+  station_datacenter string,
+  station_distance double,
+  station_seismograph string
+  )
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+
