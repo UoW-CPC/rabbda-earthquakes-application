@@ -9,11 +9,11 @@ set mapreduce.reduce.java.opts=-Xmx3686m;
 
 USE earthquakes;
 
-TRUNCATE TABLE earthquakes_stage;
-LOAD DATA INPATH ${path} OVERWRITE INTO TABLE earthquakes_stage;
+TRUNCATE TABLE earthquakes_stage_textfile;
+LOAD DATA INPATH ${path} OVERWRITE INTO TABLE earthquakes_stage_textfile;
 
-TRUNCATE TABLE earthquakes_stage_orc;
-INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(magnitude_group, year)
+TRUNCATE TABLE earthquakes_stage;
+INSERT OVERWRITE TABLE earthquakes_stage PARTITION(magnitude_group, year)
  SELECT
   month,
   day,
@@ -52,5 +52,5 @@ INSERT OVERWRITE TABLE earthquakes_stage_orc PARTITION(magnitude_group, year)
   year
   FROM earthquakes_stage;
 
-INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage_orc;
+INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage;
 

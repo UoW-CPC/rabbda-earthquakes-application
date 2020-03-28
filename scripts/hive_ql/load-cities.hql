@@ -10,14 +10,14 @@ DROP TABLE if EXISTS cities;
 -- step 1-2 create final table
 CREATE TABLE IF NOT EXISTS cities
  (
-  city string,
-  city_ascii string,
+  name string,
+  name_ascii string,
   latitude double,
   longitude double,
   country string,
   iso2 string,
   iso3 string,
-  admin_name string,
+  name string,
   capital string,
   population int,
   id string

@@ -8,9 +8,9 @@ USE earthquakes;
 
 -- step 1-10 create EARTHQUAKES staging TABLE
 
-DROP TABLE IF EXISTS earthquakes_stage;
+DROP TABLE IF EXISTS earthquakes_stage_textfile;
 
-CREATE TABLE IF NOT EXISTS earthquakes_stage
+CREATE TABLE IF NOT EXISTS earthquakes_stage_text_file
 (
   year int,
   month int,
@@ -45,9 +45,9 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
 -- step 2-10 create EARTHQUAKES staging TABLE as ORC
 
-DROP TABLE IF EXISTS earthquakes_stage_orc;
+DROP TABLE IF EXISTS earthquakes_stage;
 
-CREATE TABLE IF NOT EXISTS earthquakes_stage_orc
+CREATE TABLE IF NOT EXISTS earthquakes_stage
  (
   month int,
   day int,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage_orc
   longitude double,
   depth double,
   magnitude double,
-  magngitude_type string,
+  magnitude_type string,
   nst string,
   gap string,
   dmin string,

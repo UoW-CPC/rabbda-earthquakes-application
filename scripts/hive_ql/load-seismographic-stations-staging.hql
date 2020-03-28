@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS seismographic_stations_stage;
 -- step 1-2 create staging table
 CREATE TABLE IF NOT EXISTS seismographic_stations_stage
  (
-  station_code string,
-  station_name string,
+  code string,
+  name string,
   country string,
   latitude double,
   longitude double,
