@@ -28,17 +28,21 @@ def main():
         HDFS.put('../../data/hive-etl-pipeline/seismographic-stations.csv', path)
         Hive.loadCities(path)
         Hive.loadSeismographicStations(path)
+        Log.info("Uploading seismograph script to HDFS..")
+        HDFS.put('seismograph.py',path)
     Log.info("Files to be proccessed:")
     Log.info("Files to be imported in Hive: {}".format(earthquakes_files))
     if drop_earthquakes_tables:
         Hive.clearEarthquakesTables()
     for file in earthquakes_files:
         Hive.loadEarthquakesData(file)
-        Hive.distanceToCities()
-        Hive.distanceToClosestCity()
-        Hive.distanceToSeismographicStations()
-        Hive.distanceToClosestSeismographicStation()
-        Hive.produceSeismographs()
+        Hive.distanceToAllSeismographicStations()
+        Hive.distanceAllToCities()
+        #Hive.distanceToClosestSeismographicStation()
+
+       # Hive.distanceToClosestCity()
+
+       # Hive.produceSeismographs()
     Log.info('------------------------')
     Log.info('Hive ETL pipeline ends')
     Log.info('------------------------')

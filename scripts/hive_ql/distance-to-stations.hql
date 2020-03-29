@@ -6,12 +6,14 @@ set mapreduce.map.java.opts=-Xmx3686m;
 set mapreduce.reduce.memory.mb=4096;
 set mapreduce.reduce.java.opts=-Xmx3686m;
 
+add file seismograph.py;
+
 USE earthquakes;
 
 TRUNCATE TABLE distance_to_stations_stage;
 
 INSERT OVERWRITE TABLE distance_to_stations_stage PARTITION(magnitude_group, year)
- SELECT
+   SELECT
   eq.id as eq_id,
   eq.month as eq_month,
   eq.day as eq_day,
@@ -20,21 +22,23 @@ INSERT OVERWRITE TABLE distance_to_stations_stage PARTITION(magnitude_group, yea
   eq.date_time as eq_date_time,
   eq.latitude as eq_latitude,
   eq.longitude as eq_longitude,
-  eq.mag as eq_magnitude,
+  eq.magnitude as eq_magnitude,
   eq.place as eq_place,
   eq.country as eq_country,
-  station.station_code as station_code,
-  station.station_name as station_name,
+  station.code as station_code,
+  station.name as station_name,
   station.country as station_country,
   station.latitude as station_latitude,
   station.longitude as station_longitude,
   station.datacenter as station_datacenter,
-  eq.mag_group as eq_magnitude_group,
-  eq.year as eq_year
+  60*1.1515*(180*(acos(((sin(radians(eq.latitude))*sin(radians(station.latitude)))
+              +(cos(radians(eq.latitude))*cos(radians(station.latitude))*cos(radians(eq.longitude - station.longitude))))))
+          /PI()) as station_distance,
+  "" as station_seismograph,
+  eq.magnitude_group as magnitude_group,
+  eq.year as year
   FROM earthquakes_stage eq
   CROSS JOIN seismographic_stations station;
 
-INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage_orc;
 
-
-
+SELECT transform(eq.y_m_d,station.code,eq.id) using 'python seismograph.py' as station_seismograph from distance_to_stations_stage;

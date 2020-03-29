@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS cities
   country string,
   iso2 string,
   iso3 string,
-  name string,
+  admin string,
   capital string,
   population int,
   id string

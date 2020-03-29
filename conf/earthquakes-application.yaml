@@ -3,15 +3,13 @@
 hdfs-path: '/app'
 #
 download-list-of-years:
-  - 1997
-  - 1998
-  - 1991
+  - 2010
 #
 #download-group-of-years:
 #  - 2011
 #  - 2014
 #
-#download-magnitude-over: 5
+download-magnitude-over: 8
 #
 #download-again-historical-data: True
 

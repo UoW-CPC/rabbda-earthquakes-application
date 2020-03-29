@@ -10,7 +10,7 @@ USE earthquakes;
 
 DROP TABLE IF EXISTS earthquakes_stage_textfile;
 
-CREATE TABLE IF NOT EXISTS earthquakes_stage_text_file
+CREATE TABLE IF NOT EXISTS earthquakes_stage_textfile
 (
   year int,
   month int,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage_text_file
   location_source string,
   magnitude_source string
   )
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE TBLPROPERTIES('serialization.null.format'='');
 
 -- step 2-10 create EARTHQUAKES staging TABLE as ORC
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS earthquakes_stage
   location_source string,
   magnitude_source string
   )
-  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc;
+  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 3-10 create EARTHQUAKES final TABLE as ORC
 
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS earthquakes
   location_source string,
   magnitude_source string
   )
-  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc;
+  PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (country) SORTED BY (y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 4-10 create DISTANCE TO NEAR CITIES staging TABLE as ORC
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS distance_to_cities_stage
   city_population int,
   city_distance double
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 5-10 create DISTANCE TO NEAR CITIES final TABLE as ORC
 
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS distance_to_cities
   city_population int,
   city_distance double
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 6-10 create DISTANCE TO CLOSEST CITY staging TABLE as ORC
 
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS distance_to_city_closest_stage
   city_population int,
   city_distance double
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 7-10 create DISTANCE TO NEAR SEISMOGRAPHIC STATIONS staging TABLE as ORC
 
@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS distance_to_stations_stage
   station_distance double,
   station_seismograph string
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 8-10 create DISTANCE TO NEAR SEISMOGRAPHIC STATIONS final TABLE as ORC
 
@@ -247,7 +247,7 @@ CREATE TABLE IF NOT EXISTS distance_to_stations
   station_distance double,
   station_seismograph string
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 9-10 create DISTANCE TO CLOSEST SEISMOGRAPHIC STATIONS staging TABLE as ORC
 
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS distance_to_station_closest_stage
   station_distance double,
   station_seismograph string
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 
 -- step 10-10 create OUTPUT TABLE as ORC
 
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS output
   city_longitude double,
   city_country string,
   city_population int,
-  city_distance double
+  city_distance double,
   station_code string,
   station_name string,
   station_country string,
@@ -309,5 +309,5 @@ CREATE TABLE IF NOT EXISTS output
   station_distance double,
   station_seismograph string
   )
-PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc;
+PARTITIONED BY (magnitude_group string, year int) CLUSTERED BY (eq_country) SORTED BY (eq_y_m_d) into 4 buckets STORED AS orc TBLPROPERTIES('serialization.null.format'='');
 

@@ -70,3 +70,21 @@ class Hive:
         Log.info("return, {}".format(ret))
         Log.info("output, {}".format(out))
         Log.error("error, {}".format(err))
+
+    @classmethod
+    def distanceToAllSeismographicStations(cls, path):
+        Log.info("Calculating earthquakes distance to seismographic stations")
+        (ret, out, err) = System.command(
+            ['hive', '-f', '../hive_ql/distance-to-stations.hql'])
+        Log.info("return, {}".format(ret))
+        Log.info("output, {}".format(out))
+        Log.error("error, {}".format(err))
+
+    @classmethod
+    def distanceAllToCities(cls, path):
+        Log.info("Calculating earthquakes distance to cities")
+        (ret, out, err) = System.command(
+            ['hive', '-f', '../hive_ql/distance-to-cities.hql'])
+        Log.info("return, {}".format(ret))
+        Log.info("output, {}".format(out))
+        Log.error("error, {}".format(err))

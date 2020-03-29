@@ -6,14 +6,14 @@ DROP TABLE IF EXISTS cities_stage;
 -- step 1-2 create staging table
 CREATE TABLE IF NOT EXISTS cities_stage
 (
-  city string,
-  city_ascii string,
+  name string,
+  name_ascii string,
   latitude double,
   longitude double,
   country string,
   iso2 string,
   iso3 string,
-  admin_name string,
+  admin string,
   capital string,
   population int,
   id string

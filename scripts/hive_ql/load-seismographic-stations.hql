@@ -10,8 +10,8 @@ DROP TABLE IF EXISTS seismographic_stations;
 -- step 1-2 create final table
 CREATE TABLE IF NOT EXISTS seismographic_stations
  (
-  station_code string,
-  station_name string,
+  code string,
+  name string,
   country string,
   latitude double,
   longitude double,

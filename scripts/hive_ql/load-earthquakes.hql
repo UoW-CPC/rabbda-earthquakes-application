@@ -50,7 +50,7 @@ INSERT OVERWRITE TABLE earthquakes_stage PARTITION(magnitude_group, year)
     ELSE NULL
   END as magnitude_group,
   year
-  FROM earthquakes_stage;
+  FROM earthquakes_stage_textfile;
 
 INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage;
 

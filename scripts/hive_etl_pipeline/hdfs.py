@@ -1,15 +1,17 @@
+import re
+
 from logs import Log
 
 import subprocess
 import time
 
-class HDFS:
 
+class HDFS:
     path = ""
     files = []
 
     @classmethod
-    def command(cls,args_list):
+    def command(cls, args_list):
         Log.info('Running system command: {0}'.format(' '.join(args_list)))
         proc = subprocess.Popen(args_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         s_output, s_err = proc.communicate()
@@ -17,7 +19,7 @@ class HDFS:
         return s_return, s_output, s_err
 
     @classmethod
-    def put(cls,file,path):
+    def put(cls, file, path):
         (ret, out, err) = cls.command(['hdfs', 'dfs', '-put', file, path])
         Log.info("return: {}".format(ret))
         Log.info("output: {}".format(out))
@@ -27,13 +29,12 @@ class HDFS:
         else:
             Log.info("File successfully uploaded to HDFS")
 
-
     @classmethod
     def filesInPath(cls, path):
         cls.path = path
         Log.info("HDFS path validation:")
         (ret, out, err) = cls.command(['hdfs', 'dfs', '-ls', path])
-        if ret ==1:
+        if ret == 1:
             Log.error("HDFS path Error. Exiting the Application..")
             Log.error(err)
             Log.exit()
@@ -43,7 +44,8 @@ class HDFS:
             for line in lines:
                 line_split = line.split(' ')
                 line_len = len(line_split)
-                if line_split[line_len - 1] != '/app/earthquakes.db':
+                file_exists = re.search('.*csv$', line_split[line_len - 1])
+                if file_exists:
                     cls.files.append(line_split[line_len - 1])
 
     @classmethod
@@ -52,9 +54,4 @@ class HDFS:
 
     @classmethod
     def getFiles(cls):
-        try:
-            cls.files.pop(0)
-        except Exception as exc:
-            Log.warning('No files to be processed')
-            Log.error(exc)
         return cls.files

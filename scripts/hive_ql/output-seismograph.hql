@@ -55,3 +55,9 @@ SELECT
 --create external table if not exists earthquakes-per-location location '/hdfs' set serdeproperties('field.delim'=',');
 --create external table if not exists earthquakes-magn location '/hdfs' set serdeproperties('field.delim'=',');
 --create external table if not exists earthquakes-per-magn-groups location '/hdfs' set serdeproperties('field.delim'=',');
+
+
+  SELECT
+  transform(eq.y_m_d,station.code,eq.id) using 'python seismograph.py' as station_seismograph
+  FROM earthquakes eq
+  CROSS JOIN seismographic_stations station limit 2;
