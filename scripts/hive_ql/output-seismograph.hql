@@ -1,3 +1,7 @@
+set hive.input.format = org.apache.hadoop.hive.ql.io.BucketizeHiveInputFormat;
+set hive.optimize.bucketmapjoin  = true;
+set hive.optimize.bucketmapjoin.sortedmerge  = true;
+
 CASE   Fruit
        WHEN 'APPLE' THEN 'The owner is APPLE'
        WHEN 'ORANGE' THEN 'The owner is ORANGE'
@@ -56,6 +60,11 @@ SELECT
 --create external table if not exists earthquakes-magn location '/hdfs' set serdeproperties('field.delim'=',');
 --create external table if not exists earthquakes-per-magn-groups location '/hdfs' set serdeproperties('field.delim'=',');
 
+
+
+add file seismograph.py;
+insert into
+SELECT transform(eq_y_m_d,station_code,eq_id) using 'python seismograph.py' as station_seismograph from distance_to_stations_stage;
 
   SELECT
   transform(eq.y_m_d,station.code,eq.id) using 'python seismograph.py' as station_seismograph

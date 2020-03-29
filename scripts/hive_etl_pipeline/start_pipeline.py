@@ -39,10 +39,8 @@ def main():
         Hive.distanceToAllSeismographicStations()
         Hive.distanceAllToCities()
         #Hive.distanceToClosestSeismographicStation()
-
        # Hive.distanceToClosestCity()
-
-       # Hive.produceSeismographs()
+       # Hive.produceOutputSeismographs()
     Log.info('------------------------')
     Log.info('Hive ETL pipeline ends')
     Log.info('------------------------')

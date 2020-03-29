@@ -6,8 +6,6 @@ set mapreduce.map.java.opts=-Xmx3686m;
 set mapreduce.reduce.memory.mb=4096;
 set mapreduce.reduce.java.opts=-Xmx3686m;
 
-add file seismograph.py;
-
 USE earthquakes;
 
 TRUNCATE TABLE distance_to_stations_stage;
@@ -34,11 +32,9 @@ INSERT OVERWRITE TABLE distance_to_stations_stage PARTITION(magnitude_group, yea
   60*1.1515*(180*(acos(((sin(radians(eq.latitude))*sin(radians(station.latitude)))
               +(cos(radians(eq.latitude))*cos(radians(station.latitude))*cos(radians(eq.longitude - station.longitude))))))
           /PI()) as station_distance,
-  "" as station_seismograph,
   eq.magnitude_group as magnitude_group,
   eq.year as year
   FROM earthquakes_stage eq
   CROSS JOIN seismographic_stations station;
 
-
-SELECT transform(eq.y_m_d,station.code,eq.id) using 'python seismograph.py' as station_seismograph from distance_to_stations_stage;
+INSERT INTO distance_to_stations PARTITION(magnitude_group, year) SELECT * FROM distance_to_stations_stage;

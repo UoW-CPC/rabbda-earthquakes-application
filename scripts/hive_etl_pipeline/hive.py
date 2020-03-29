@@ -72,8 +72,8 @@ class Hive:
         Log.error("error, {}".format(err))
 
     @classmethod
-    def distanceToAllSeismographicStations(cls, path):
-        Log.info("Calculating earthquakes distance to seismographic stations")
+    def distanceToAllSeismographicStations(cls):
+        Log.info("Calculating earthquakes distance to all seismographic stations")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-stations.hql'])
         Log.info("return, {}".format(ret))
@@ -81,10 +81,38 @@ class Hive:
         Log.error("error, {}".format(err))
 
     @classmethod
-    def distanceAllToCities(cls, path):
-        Log.info("Calculating earthquakes distance to cities")
+    def distanceAllToCities(cls):
+        Log.info("Calculating earthquakes distance to all cities")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-cities.hql'])
+        Log.info("return, {}".format(ret))
+        Log.info("output, {}".format(out))
+        Log.error("error, {}".format(err))
+
+
+    @classmethod
+    def distanceToClosestSeismographicStation(cls):
+        Log.info("Calculating earthquakes distance to closest seismographic station")
+        (ret, out, err) = System.command(
+            ['hive', '-f', '../hive_ql/distance-to-station-closest.hql'])
+        Log.info("return, {}".format(ret))
+        Log.info("output, {}".format(out))
+        Log.error("error, {}".format(err))
+
+    @classmethod
+    def distanceToClosestCity(cls):
+        Log.info("Calculating earthquakes distance to closest city")
+        (ret, out, err) = System.command(
+            ['hive', '-f', '../hive_ql/distance-to-city-closest.hql'])
+        Log.info("return, {}".format(ret))
+        Log.info("output, {}".format(out))
+        Log.error("error, {}".format(err))
+
+    @classmethod
+    def produceOutputSeismographs(cls):
+        Log.info("ETL pipeline Output: Join earthquakes with closest city,station and produce seismograph")
+        (ret, out, err) = System.command(
+            ['hive', '-f', '../hive_ql/output-seismograph.hql'])
         Log.info("return, {}".format(ret))
         Log.info("output, {}".format(out))
         Log.error("error, {}".format(err))
