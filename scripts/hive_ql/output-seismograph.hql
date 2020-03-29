@@ -46,6 +46,8 @@ FROM distance_to_station_closest_stage station JOIN distance_to_city_closest_sta
 --          the table contains information for all processed datasets, final table
 --          last step of the pipeline
 
+add file seismograph.py;
+
 INSERT INTO output_seismograph PARTITION(magnitude_group, year)
 SELECT
   eq_id,
