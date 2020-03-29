@@ -1,72 +1,76 @@
-set hive.input.format = org.apache.hadoop.hive.ql.io.BucketizeHiveInputFormat;
-set hive.optimize.bucketmapjoin  = true;
-set hive.optimize.bucketmapjoin.sortedmerge  = true;
+set hive.exec.dynamic.partition = true;
+set hive.exec.dynamic.partition.mode = nonstrict;
+set hive.enforce.bucketing = true;
+set mapreduce.map.memory.mb=4096;
+set mapreduce.map.java.opts=-Xmx3686m;
+set mapreduce.reduce.memory.mb=4096;
+set mapreduce.reduce.java.opts=-Xmx3686m;
 
-CASE   Fruit
-       WHEN 'APPLE' THEN 'The owner is APPLE'
-       WHEN 'ORANGE' THEN 'The owner is ORANGE'
-       ELSE 'It is another Fruit'
-END
+USE earthquakes;
 
-select case x
-when 1 then 'one'
-when 2 then 'two'
-when 0 then 'zero'
-else 'out of range'
-end from t1;
+TRUNCATE TABLE output_stage;
 
-select case
-when dayname(now()) in ('Saturday','Sunday') then 'result undefined on weekends'
-when x > y then 'x greater than y'
-when x = y then 'x and y are equal'
-when x is null or y is null then 'one of the columns is null'
-else null end
-from t1;
-
-
+INSERT OVERWRITE TABLE output_stage PARTITION(magnitude_group, year)
 SELECT
-  date_time,
-  mag,
-  place,
-  country,
-  CASE
-    WHEN mag < 2 THEN 'low'
-    WHEN mag >= 2 and mag < 4 THEN 'medium'
-    WHEN mag >= 4 and mag < 6 THEN 'high'
-    WHEN mag >= 6 THEN 'extreme'
-    ELSE NULL
-  END as mag_group
-  FROM earthquakes_stage;
+  city.eq_id as eq_id,
+  city.eq_month as eq_month,
+  city.eq_day as eq_day,
+  city.eq_y_m_d as eq_y_m_d,
+  city.eq_time as eq_time,
+  city.eq_date_time as eq_date_time,
+  city.eq_latitude as eq_latitude,
+  city.eq_longitude as eq_longitude,
+  city.eq_magnitude as eq_magnitude,
+  city.eq_place as eq_place,
+  city.eq_country as eq_country,
+  city.city_name as  city_name,
+  city.city_latitude as city_latitude,
+  city.city_longitude as city_longitude,
+  city.city_country as city_country,
+  city.city_population as city_population,
+  city.city_distance as city_distance,
+  station.station_code as station_code,
+  station.station_name as station_name,
+  station.station_country as station_country,
+  station.station_latitude as station_latitude,
+  station.station_longitude as station_longitude,
+  station.station_datacenter as station_datacenter,
+  station.station_distance as station_distance,
+  station.magnitude_group as magnitude_group,
+  station.year as year
+FROM distance_to_station_closest_stage station JOIN distance_to_city_closest_stage city on (station.eq_id = city.eq_id);
+
+INSERT INTO output_seismograph PARTITION(magnitude_group, year)
+SELECT
+  eq_id,
+  eq_month,
+  eq_day,
+  eq_y_m_d,
+  eq_time,
+  eq_date_time,
+  eq_latitude,
+  eq_longitude,
+  eq_magnitude,
+  eq_place,
+  eq_country,
+  city_name,
+  city_latitude,
+  city_longitude,
+  city_country,
+  city_population,
+  city_distance,
+  station_code,
+  station_name,
+  station_country,
+  station_latitude,
+  station_longitude,
+  station_datacenter,
+  station_distance,
+  station_seismograph,
+  magnitude_group,
+  year
+FROM output_stage join
+(SELECT transform(eq_y_m_d,station_code,eq_id) using 'python seismograph.py' as station_seismograph
+  FROM output_stage) station_seismograph;
 
 
-
-
---create table if not exists two like one;
---create external table three location '/user/test/';
---create temporary table four;
---create external table if not exists cities location '/hdfs' set serdeproperties('field.delim'=',')  clustered by latutude into 4 buckets;
---create external table if not exists seismographic-stations location '/hdfs' set serdeproperties('field.delim'=',')  clustered by (latutude) sorted by (country) into 4 buckets;
---create external table if not exists earthquakes-full location '/hdfs' set serdeproperties('field.delim'=',') partitioned by (year int, magn_group) clustered by latutude into 4 buckets;
---create view if not exists earthquakes-view;
---create external table if not exists earthquakes-to-all-cities location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-closest-city location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-all-stations location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-to-closest-station location '/hdfs' set serdeproperties('field.delim'=',');;
---create external table if not exists earthquakes-results location '/hdfs' set serdeproperties('field.delim'=',') partitioned by (year int, station string);
---create external table if not exists earthquakes-per-country location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-year location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-id location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-location location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-magn location '/hdfs' set serdeproperties('field.delim'=',');
---create external table if not exists earthquakes-per-magn-groups location '/hdfs' set serdeproperties('field.delim'=',');
-
-
-
-add file seismograph.py;
-insert into
-SELECT transform(eq_y_m_d,station_code,eq_id) using 'python seismograph.py' as station_seismograph from distance_to_stations_stage;
-
-  SELECT
-  transform(eq.y_m_d,station.code,eq.id) using 'python seismograph.py' as station_seismograph
-  FROM earthquakes eq
-  CROSS JOIN seismographic_stations station limit 2;
