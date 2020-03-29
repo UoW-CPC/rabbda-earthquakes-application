@@ -8,6 +8,8 @@ set mapreduce.reduce.java.opts=-Xmx3686m;
 
 USE earthquakes;
 
+-- step 1-2 calculate distance to all stations for the current dataset, staging table
+
 TRUNCATE TABLE distance_to_stations_stage;
 
 INSERT OVERWRITE TABLE distance_to_stations_stage PARTITION(magnitude_group, year)
@@ -36,5 +38,8 @@ INSERT OVERWRITE TABLE distance_to_stations_stage PARTITION(magnitude_group, yea
   eq.year as year
   FROM earthquakes_stage eq
   CROSS JOIN seismographic_stations station;
+
+-- step 2-2 update table distance to all stations with the current dataset
+--          the table contains information for all processed datasets, final table
 
 INSERT INTO distance_to_stations PARTITION(magnitude_group, year) SELECT * FROM distance_to_stations_stage;

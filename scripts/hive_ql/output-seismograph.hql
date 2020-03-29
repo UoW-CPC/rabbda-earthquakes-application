@@ -8,6 +8,8 @@ set mapreduce.reduce.java.opts=-Xmx3686m;
 
 USE earthquakes;
 
+-- step 1-2 join minimum distance to city and station based on earthquaked id, staging table
+
 TRUNCATE TABLE output_stage;
 
 INSERT OVERWRITE TABLE output_stage PARTITION(magnitude_group, year)
@@ -39,6 +41,10 @@ SELECT
   station.magnitude_group as magnitude_group,
   station.year as year
 FROM distance_to_station_closest_stage station JOIN distance_to_city_closest_stage city on (station.eq_id = city.eq_id);
+
+-- step 2-2 calculate seismograph URL and update output table with the current dataset
+--          the table contains information for all processed datasets, final table
+--          last step of the pipeline
 
 INSERT INTO output_seismograph PARTITION(magnitude_group, year)
 SELECT

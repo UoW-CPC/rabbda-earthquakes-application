@@ -8,6 +8,8 @@ set mapreduce.reduce.java.opts=-Xmx3686m;
 
 USE earthquakes;
 
+-- calculate the closest city for all earthquakes in the current dataset, staging table
+
 TRUNCATE TABLE distance_to_city_closest_stage;
 
 INSERT OVERWRITE TABLE distance_to_city_closest_stage PARTITION(magnitude_group, year)

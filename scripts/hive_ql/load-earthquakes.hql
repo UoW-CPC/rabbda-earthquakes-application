@@ -9,8 +9,12 @@ set mapreduce.reduce.java.opts=-Xmx3686m;
 
 USE earthquakes;
 
+-- step 1-3 load from HDFS the data to be processed by Hive, staging table
+
 TRUNCATE TABLE earthquakes_stage_textfile;
 LOAD DATA INPATH ${path} OVERWRITE INTO TABLE earthquakes_stage_textfile;
+
+-- step 2-3 calculate magnitude group, staging table
 
 TRUNCATE TABLE earthquakes_stage;
 INSERT OVERWRITE TABLE earthquakes_stage PARTITION(magnitude_group, year)
@@ -51,6 +55,9 @@ INSERT OVERWRITE TABLE earthquakes_stage PARTITION(magnitude_group, year)
   END as magnitude_group,
   year
   FROM earthquakes_stage_textfile;
+
+-- step 3-3 update table earthquakes with the current dataset
+--          the table contains information for all processed datasets, final table
 
 INSERT INTO earthquakes PARTITION(magnitude_group, year) SELECT * FROM earthquakes_stage;
 

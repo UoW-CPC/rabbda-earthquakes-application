@@ -4,6 +4,7 @@ USE earthquakes;
 DROP TABLE IF EXISTS cities_stage;
 
 -- step 1-2 create staging table
+
 CREATE TABLE IF NOT EXISTS cities_stage
 (
   name string,
@@ -21,4 +22,5 @@ CREATE TABLE IF NOT EXISTS cities_stage
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
 -- step 2-2 load data into staging table
+
 LOAD DATA INPATH ${path} OVERWRITE INTO TABLE cities_stage;

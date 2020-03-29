@@ -73,7 +73,7 @@ class Hive:
 
     @classmethod
     def distanceToAllSeismographicStations(cls):
-        Log.info("Calculating earthquakes distance to all seismographic stations")
+        Log.info("Calculating earthquakes distance to all seismographic stations..")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-stations.hql'])
         Log.info("return, {}".format(ret))
@@ -82,7 +82,7 @@ class Hive:
 
     @classmethod
     def distanceAllToCities(cls):
-        Log.info("Calculating earthquakes distance to all cities")
+        Log.info("Calculating earthquakes distance to all cities..")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-cities.hql'])
         Log.info("return, {}".format(ret))
@@ -92,7 +92,7 @@ class Hive:
 
     @classmethod
     def distanceToClosestSeismographicStation(cls):
-        Log.info("Calculating earthquakes distance to closest seismographic station")
+        Log.info("Calculating earthquakes distance to closest seismographic station..")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-station-closest.hql'])
         Log.info("return, {}".format(ret))
@@ -101,7 +101,7 @@ class Hive:
 
     @classmethod
     def distanceToClosestCity(cls):
-        Log.info("Calculating earthquakes distance to closest city")
+        Log.info("Calculating earthquakes distance to closest city..")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/distance-to-city-closest.hql'])
         Log.info("return, {}".format(ret))
@@ -110,7 +110,7 @@ class Hive:
 
     @classmethod
     def produceOutputSeismographs(cls):
-        Log.info("ETL pipeline Output: Join earthquakes with closest city,station and produce seismograph")
+        Log.info("ETL pipeline Output: Join earthquakes with closest city,station and produce seismograph..")
         (ret, out, err) = System.command(
             ['hive', '-f', '../hive_ql/output-seismograph.hql'])
         Log.info("return, {}".format(ret))

@@ -8,6 +8,7 @@ USE earthquakes;
 DROP TABLE IF EXISTS seismographic_stations;
 
 -- step 1-2 create final table
+
 CREATE TABLE IF NOT EXISTS seismographic_stations
  (
   code string,
@@ -20,6 +21,7 @@ CREATE TABLE IF NOT EXISTS seismographic_stations
   CLUSTERED BY (country) SORTED BY (country) into 4 buckets STORED AS orc;
 
 -- step 2-2 import data into final table
+
 INSERT INTO seismographic_stations SELECT * FROM seismographic_stations_stage;
 
 DROP TABLE IF EXISTS seismographic_stations_stage;
