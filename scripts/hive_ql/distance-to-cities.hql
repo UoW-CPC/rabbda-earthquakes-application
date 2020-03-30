@@ -13,7 +13,7 @@ USE earthquakes;
 TRUNCATE TABLE distance_to_cities_stage;
 
 INSERT OVERWRITE TABLE distance_to_cities_stage PARTITION(magnitude_group, year)
-   SELECT
+   SELECT /*+ STREAMTABLE (eq) */
   eq.id as eq_id,
   eq.month as eq_month,
   eq.day as eq_day,
@@ -35,8 +35,8 @@ INSERT OVERWRITE TABLE distance_to_cities_stage PARTITION(magnitude_group, year)
           /PI()) as city_distance,
   eq.magnitude_group as magnitude_group,
   eq.year as year
-  FROM earthquakes_stage eq
-  CROSS JOIN cities city;
+  FROM cities city 
+  CROSS JOIN earthquakes_stage eq;
 
 -- step 2-2 update table distance to all cities with the current dataset
 --          the table contains information for all processed datasets, final table
