@@ -1,9 +1,7 @@
 from configuration import Configuration
 from logs import Log
 from system import System
-import os
 
-from scripts.earthquakes_history import start_download
 
 
 def main():

@@ -1,16 +1,19 @@
 
-#
+
 hdfs-path: '/app'
-#
+
 download-list-of-years:
   - 2015
-#
+  - 2010
+
 #download-group-of-years:
 #  - 2011
 #  - 2014
-#
-#download-magnitude-over: 7
-#
+
+download-magnitude-over: 5
+
 #download-again-historical-data: True
 
 #hive-drop-all-tables: false
+
+
