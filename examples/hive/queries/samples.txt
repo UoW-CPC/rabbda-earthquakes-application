@@ -1,5 +1,0 @@
-hive -e 'select * from eartqhuakes-raw limit 10;'
-
-hive -f ../commands/earthquakes-per-year.hql
-
-
