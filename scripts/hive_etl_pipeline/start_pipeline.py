@@ -28,8 +28,8 @@ def main():
         HDFS.put('../../data/hive-etl-pipeline/seismographic-stations.csv', path)
         Hive.loadCities(path)
         Hive.loadSeismographicStations(path)
-        Log.info("Uploading seismograph script to HDFS..")
-        HDFS.put('seismograph.py',path)
+        #Log.info("Uploading seismograph script to HDFS..")
+        #HDFS.put('seismograph.py',path)
     Log.info("Files to be proccessed:")
     Log.info("Files to be imported in Hive: {}".format(earthquakes_files))
     if drop_earthquakes_tables:
