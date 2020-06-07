@@ -64,7 +64,7 @@ The following instructions guide you on how to set up the project on your Hadoop
  ls
  ```
  There you can see eight folders and two files:
-  * _data_, folder - datasets for cities and seismographic station.
+  * _data_, datasets for cities and seismographic station. Folder
   * _hiveql_, folder - queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
   * _sample_data_, folder - data produced in a demo execution.
   * _sample_output_, folder - terminal output for a demo execution.
