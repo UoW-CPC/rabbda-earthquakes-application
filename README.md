@@ -56,17 +56,21 @@ The following instructions guide you on how to set up the project on your Hadoop
  There you can see seven folders:
   * _data_, data sets for cities and seismographic station.
   * _hiveql_, queries to run the ETL pipeline, step 3, and advanced query, step 5.
-  * _sample_results_,
   * _sample_data_,
-   * _sample_tableau_, to perform step 5.
+  * _sample_results_,
+  * _sample_tableau_, to perform step 5.
   * _spricts_python_, scripts to perform steps 2 and 4.
   * _scripts_shell_, folder which contains the bash scripts used to used to download the earthquakes from the Rest API, step 1.
   * _scripts_spark_, scripts to perform step 5.
   * _slides_
 
-  * _README.md_, project description file.
-
-
+__Tip:__ changing directories with terminal commands.
+ ```
+ ls #list all folders and files
+ cd _folder_name_ #move to folder
+ cd .. #move to parent folder
+ pwd #pring working directory
+ ```
 
  #### 1. Data acquisition: Requesting the data from a Rest API.
 
