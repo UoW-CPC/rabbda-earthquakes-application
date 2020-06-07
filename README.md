@@ -13,9 +13,9 @@ from different sources, and provides answers to complex research questions.
 This is a step-by-step guide that describes all application phases:
  1. Data acquisition: Request the data from a Rest API.
  2. Data preparation: Pre-process the data with Python.
- 3. Data ingestion: upload the data to HDFS.
+ 3. Data ingestion: Upload the data to HDFS.
  4. ETL pipeline: Execute Hive queries.
- 5. ETL pipeline Results: Download the data from HDFS and post-process them with Python.
+ 5. ETL pipeline results: Download the data from HDFS and post-process them with Python.
  6. Further analysis:
     * Spark in memory data processing.
     * Complex research questions with Hive.
@@ -28,7 +28,7 @@ The data source for this demo is related to earthquakes, source: [USGS science f
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
 Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
 
- __Keywords:__ Hadoop, HDFS, Hive, Rest API, Python, Spark, Bash, Tableau.
+ __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
 
  ## Getting started
