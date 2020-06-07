@@ -63,16 +63,18 @@ The following instructions guide you on how to set up the project on your Hadoop
  ```
  ls
  ```
- There you can see eight folders:
-  * _data_, datasets for cities and seismographic station.
-  * _hiveql_, queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
-  * _sample_data_, data produced in a demo execution.
-  * _sample_output_, terminal output for a demo execution.
-  * _sample_tableau_, visualisations for a demo execution, phase 6.
-  * _spricts_python_, scripts to perform phases 2 and 5.
-  * _scripts_shell_, shell scripts used to used to download the earthquakes from the Rest API, phase 1.
-  * _scripts_spark_, scripts to perform further analysis in phase 6.
-  * _slides_, contain material related to this release, e.g. architecture, results.
+ There you can see eight folders and two files:
+  * _data_, [folder] datasets for cities and seismographic station.
+  * _hiveql_, [folder] queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
+  * _sample_data_, [folder] data produced in a demo execution.
+  * _sample_output_, [folder] terminal output for a demo execution.
+  * _sample_tableau_, [folder] visualisations for a demo execution, phase 6.
+  * _spricts_python_, [folder] scripts to perform phases 2 and 5.
+  * _scripts_shell_, [folder] shell scripts used to download the earthquakes from the Rest API, phase 1.
+  * _scripts_spark_, [folder] scripts to perform further analysis in phase 6.
+  * _slides_, [folder] material related to this release, e.g. architecture, results.
+  * _README.md_, [file]
+  * _requirements_, [file]
 
 __Tip:__ changing directories with terminal commands.
  ```
@@ -82,6 +84,10 @@ __Tip:__ changing directories with terminal commands.
  pwd            #pring working directory
  ```
 
+ ```
+ Python 2.7
+ pip install -m requirements.txt
+ ```
  #### 1. Data acquisition: Request data from a Rest API.
 
 Move to the scripts_shell folder to download the earthquakes by executing the command:
