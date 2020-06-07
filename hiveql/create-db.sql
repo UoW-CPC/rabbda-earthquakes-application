@@ -1,1 +1,1 @@
-create database if not exists earthquakesbasic;
+create database if not exists earthquakes;

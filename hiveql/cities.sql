@@ -1,4 +1,4 @@
-use earthquakesbasic;
+use earthquakes;
 
 drop table if exists cities;
 
@@ -18,4 +18,4 @@ create table cities
   )
 row format delimited fields terminated by ',';
 
-LOAD DATA INPATH '/user/dkagialis/demo/cities.csv' OVERWRITE INTO TABLE cities;
+LOAD DATA INPATH '/YOUR_HDFS_PATH/cities.csv' OVERWRITE INTO TABLE cities;

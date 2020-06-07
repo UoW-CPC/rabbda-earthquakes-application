@@ -1,4 +1,4 @@
-use earthquakesbasic;
+use earthquakes;
 
 
 drop table if exists earthquakes_full_dataset;
@@ -33,4 +33,4 @@ create table earthquakes_full_dataset
   )
 row format delimited fields terminated by ',';
 
-LOAD DATA INPATH '/user/dkagialis/demo/earthquakes-final.csv' OVERWRITE INTO TABLE earthquakes_full_dataset;
+LOAD DATA INPATH '/YOUR_HDFS_PATH/earthquakes-final.csv' OVERWRITE INTO TABLE earthquakes_full_dataset;

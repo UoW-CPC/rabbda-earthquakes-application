@@ -1,4 +1,4 @@
-use earthquakesbasic;
+use earthquakes;
 
 drop table if exists earthquakes_distance_to_all_cities;
 
