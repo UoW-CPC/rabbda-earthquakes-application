@@ -7,8 +7,7 @@ This application is a proof of concept design that aims to demonstrate how Big D
 This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
 Additionally, Shell and Python scripts are being used to perform several tasks, e.g. data acquisition and preparation.
 
-From architecture's point of view, the application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data
-from different sources, and provides answers to complex research questions.
+From architecture's point of view, the application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data from different sources, and provides answers to complex research questions.
 
 This is a step-by-step guide that describes all application phases:
  1. Data acquisition: Request the data from a Rest API.
@@ -28,23 +27,26 @@ The data source for this demo is related to earthquakes, source: [USGS science f
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
 Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
 
+To more detail, static data related to cities and seismograph stations are being associated with earthquakes data acquired from the the a Rest API to produce results like earthquake closest city and seismographic station, and produce the seismograph.
+
+
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
 
  ## Getting started
- These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+ The following instructions guides you on to set up the project up on your Hadoop environment.
 
  ### Download the repository
- The initial step is to download the repository in your Hadoop machine. To do so, run in terminal the following command:
+ The initial step is to download the repository in your Hadoop machine. To do so, in terminal run the following command:
  ```
- git clone https://github.com/UoW-CPC/rabbda-hive-etl-pipeline.git
+ git clone --single-branch --branch release-0.0 https://github.com/UoW-CPC/rabbda-earthquakes-portal.git
  ```
 
  ### Running the application
- Having download the repository you can now run the application and perform all the 5 steps mentioned in the introduction paragraph.
+ Having download the repository you can now run the application and perform all the 6 steps mentioned in the introduction paragraph.
  First move to the working directory by executing the command:
  ```
- cd rabbda-hive-etl-pipeline
+ cd rabbda-earthquakes-portal
  ```
  Now execute the command:
  ```
