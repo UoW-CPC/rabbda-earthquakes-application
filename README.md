@@ -10,11 +10,11 @@ Additionally, Shell and Python scripts are being used to perform several tasks, 
 From architecture's point of view, the application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data from different sources, and provides answers to complex research questions.
 
 This is a step-by-step guide that describes all application phases:
- 1. Data acquisition: Request the data from a Rest API.
- 2. Data preparation: Pre-process the data with Python.
- 3. Data ingestion: Upload the data to HDFS.
+ 1. Data acquisition: Request data from a Rest API.
+ 2. Data preparation: Pre-process data with Python.
+ 3. Data ingestion: Upload data to HDFS.
  4. ETL pipeline: Execute Hive queries.
- 5. ETL pipeline results: Download the data from HDFS and post-process them with Python.
+ 5. ETL pipeline results: Download data from HDFS and post-process them with Python.
  6. Further analysis:
     * Spark in memory data processing.
     * Complex research questions with Hive.
@@ -72,7 +72,7 @@ __Tip:__ changing directories with terminal commands.
  pwd            #pring working directory
  ```
 
- #### 1. Data acquisition: Requesting the data from a Rest API.
+ #### 1. Data acquisition: Request data from a Rest API.
 
 Move the bash folder to download the earthquakes by executing the command:
 
@@ -100,7 +100,7 @@ Move the bash folder to download the earthquakes by executing the command:
  ```
  cd ..
  ```
- #### 2. Data preparation: Pre-processing the data with Python.
+ #### 2. Data preparation: Pre-process data with Python.
 
  As you can see the data contain multiple header rows, this is because every request returned also the headers.
  Therefore, it is required to clear those rows. We do so by executing a Python script.
@@ -132,7 +132,7 @@ Move the bash folder to download the earthquakes by executing the command:
  ```
  cd ..
  ```
- #### 3. Data ingestion: upload the data to HDFS.
+ #### 3. Data ingestion: Upload data to HDFS.
 
  In this phase we simple have to upload the three data sets, earthquakes, cities, seismographic stations to HDFS.
 
@@ -140,7 +140,7 @@ Move the bash folder to download the earthquakes by executing the command:
 #Command: hdfs dfs -put /"your_local_dir_path/file" /"your_hdfs_dir_path"
  ```
 
- #### 4. ETL pipeline: Executing Hive queries.
+ #### 4. ETL pipeline: Execute Hive queries.
 
  This is the most important part of the application, that import the data sets to hive and join them to create new data sets.
 
@@ -172,7 +172,7 @@ Move the bash folder to download the earthquakes by executing the command:
  beeline -u jdbc:hive2://"your hive metastore server":10000 -n hive -f export-to-hdfs.sql
  ```
 
- #### 5. Output data: Downloading the data from HDFS and Post-processing the data with Python.
+ #### 5. Output data: Download data from HDFS and post-process them with Python.
 
  Now we need to create the Seismograph
  ```
@@ -189,5 +189,5 @@ Move the bash folder to download the earthquakes by executing the command:
 
 
  ##### Complex research questions with Hive.
- ##### Data presentation with Tableau.
+ ##### Data visualisation with Tableau.
 
