@@ -5,7 +5,9 @@ This application is a proof of concept design that aims to demonstrate how Big D
 Additionally, by implementing various releases, someone can understand how a project evolves through multiple iterations.
 
 __RABBDA project:__
+
 RABBDA (Reduce Access Barriers to Big Data Analytics) is a project of the Centre of Parallel Computing - University of Westminster https://www.westminster.ac.uk/research/groups-and-centres/centre-for-parallel-computing.   The project objective is to provide students and practitioners, access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
+
 For more information, please review RABBDA context at readthedocs.io
 
 ### Release:0.0
