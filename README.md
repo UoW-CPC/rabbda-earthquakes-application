@@ -265,3 +265,6 @@ To this project Tableau is being used to create a world map that provides inform
 Tableau is a proprietary tool and requires a license to use.
 Folder sample_tableau has a Tableau file that can be use as an example.
 Sample visualisation in Tableau.
+
+## Architecture
+
