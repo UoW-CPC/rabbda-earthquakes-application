@@ -26,8 +26,8 @@ This is a step-by-step guide that describes all application phases:
  5. ETL pipeline results: Download data from HDFS and post-process them with Python.
  6. Further analysis:
     * Spark in memory data processing.
-    * Complex research questions with Hive.
-    * Data presentation with Tableau.
+    * Advanced research questions with Hive.
+    * Data visualisations with Tableau.
 
 For extra information on the various phases, please refer to related folders.
 
@@ -174,6 +174,7 @@ hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
  # 3. Create table seasmograph stations
   #    Important: edit the seismograph-stations.sql file so to point to the right HDFS path.
  hive -f seismograph-stations.sql
+
   # ETL PIPELINE
  # 4. Create table earthquakes_full_dataset
   #    Important: edit the 1.sql file so to point to the right HDFS path.
@@ -231,8 +232,8 @@ hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
  ##### Spark in memory data processing.
 
 
- ##### Complex research questions with Hive.
- 
+ ##### Advanced research questions with Hive.
 
- ##### Data visualisation with Tableau.
+
+ ##### Data visualisations with Tableau.
 
