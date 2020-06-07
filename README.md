@@ -27,8 +27,7 @@ The data source for this demo is related to earthquakes, source: [USGS science f
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
 Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
 
-To more detail, static data related to cities and seismograph stations are being associated with earthquakes data acquired from the the a Rest API to produce results like earthquake closest city and seismographic station, and produce the seismograph.
-
+To more detail, static data related to cities and seismograph stations are being associated with earthquakes data acquired from the Rest API. The result of this process produces information such as earthquakes closest cities and seismographic stations and creates links to seismographs.
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
