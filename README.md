@@ -4,20 +4,24 @@
 This application is a proof of concept design that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
 
 ## Release:0.0
-Release 0.0 introduces technologies like Rest APIs, Hadoop HDSF, Hive, Spark, and Tableau.
-Specifically, this application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data
+This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
+Additionally, Shell and Python scripts are being used to perform several tasks,such data acquisition and preparation.
+
+From architecture's point of view, the application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data
 from different sources, and provides answers to complex research questions.
 
 This is a step-by-step guide that includes all application phases:
- 1. Data acquisition: Requesting the data from a Rest API.
- 2. Data preparation: Pre-processing the data with Python.
+ 1. Data acquisition: Request the data from a Rest API.
+ 2. Data preparation: Pre-process the data with Python.
  3. Data ingestion: upload the data to HDFS.
- 4. ETL pipeline: Executing Hive queries.
- 5. Output data: Downloading the data from HDFS and Post-processing the data with Python.
+ 4. ETL pipeline: Execute Hive queries.
+ 5. ETL pipeline Results: Download the data from HDFS and post-process them with Python.
  6. Further analysis:
     * Spark in memory data processing.
     * Complex research questions with Hive.
     * Data presentation with Tableau.
+For extra information on the various phases, please refer to related repository folders.
+
 
 The data source for this demo is related to earthquakes, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
