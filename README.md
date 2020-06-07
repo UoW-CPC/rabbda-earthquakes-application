@@ -1,11 +1,12 @@
-# rabbda-earthquakes-portal - release:0.0
-
+# rabbda-earthquakes-portal
 
 ## Introduction
-This application comes along with a series of solutions that aim to demonstrate how Big Data can be used to create complex and real-life Big Data applications.
+This application is a proof of concept design that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
 
-Specifically, with this application, we present a Hive ETL pipeline (Extract-Transform-Load) that joins data
-from different sources, and provides answers complex research questions and gain better insights.
+# Release:0.0
+Release 0.0 introduces technologies like Rest APIs, Hadoop HDSF, Hive, Spark, and Tableau.   
+Specifically, this application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data
+from different sources, and provides answers to complex research questions.
 
 This is a step-by-step guide that includes all application phases:
  1. Data acquisition: Requesting the data from a Rest API.
