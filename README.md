@@ -66,10 +66,10 @@ The following instructions guide you on how to set up the project on your Hadoop
 
 __Tip:__ changing directories with terminal commands.
  ```
- ls #list all folders and files
- cd _folder_name_ #move to folder
- cd .. #move to parent folder
- pwd #pring working directory
+ ls             #list all folders and files
+ cd folder_name #move to folder
+ cd ..          #move to parent folder
+ pwd            #pring working directory
  ```
 
  #### 1. Data acquisition: Requesting the data from a Rest API.
