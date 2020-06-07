@@ -172,12 +172,12 @@ hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
  #    Important: edit the cities.sql file so to point to the right HDFS path.
  hive -f cities.sql
  # 3. Create table seasmograph stations
-  #    Important: edit the seismograph-stations.sql file so to point to the right HDFS path.
+ #    Important: edit the seismograph-stations.sql file so to point to the right HDFS path.
  hive -f seismograph-stations.sql
 
   # ETL PIPELINE
  # 4. Create table earthquakes_full_dataset
-  #    Important: edit the 1.sql file so to point to the right HDFS path.
+ #    Important: edit the 1.sql file so to point to the right HDFS path.
  hive -f 1.sql
  # 5. Create table earthquakes with columns: id, time, day, latitude, longitude, magnitude
  hive -f 2.sql
@@ -192,7 +192,7 @@ hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
  # 9. Create table earthquakes_closest_city_station inner join
  hive -f 6.sql
  # 10. Export table earthquakes_closest_city_station to HDFS
-  #    Important: edit the export-to-hdfs.sql file so to point to the right HDFS path.
+ #    Important: edit the export-to-hdfs.sql file so to point to the right HDFS path.
  hive -f export-to-hdfs.sql
  ```
 
@@ -230,10 +230,38 @@ hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
 
 
  ##### Spark in memory data processing.
+Apache Spark is a powerful technology that can be utilised to perform several computational task, from streaming to machine learning or even to run SQL queries.
+This example demonstrates that we can use several technologies in our solution and also we can analyse our dataset with several perspectives.
 
+Therefore, as an introduction to Spark will answer questions like:
+* How many earthquakes there were for each month?
+* How many earthquakes there were for each country?
 
- ##### Advanced research questions with Hive.
+Spark has two major releases Spark and Spark2.
+For question one we use Spark and for question two we use Spark2.
+```
+cd ../scripts_spark
+spark-submit earthquakes_per_mount.py
+spark-submit earthquakes_per_year.py
+```
 
+##### Advanced research questions with Hive.
+In this example demonstrates that we can further analyse the output of the ETL pipeline and every table created can provide information useful to our research.
+
+For instance to find how many people are affected by an earthquake is required to query Hive table earthquakes_distance_to_all_cities
+```
+cd ../hiveql
+hive -f earthquake-population.csv
+```
 
  ##### Data visualisations with Tableau.
+An important aspect of every big data solution is the visualisation of the data and the results of each analysis process.
 
+Tableau is a well established tool that allow us to perform advanced analytics and create graphs and visualisations.
+Also, Tableau enables the user to connect to several data sources, and Apache Hive is among them.
+
+To this project Tableau is being used to create a world map that provides information related to the result of the ETL pipeline, e.g. closest city, linkk to the seismograph.
+
+Tableau is a proprietary tool and requires a license to use.
+Folder sample_tableau has a Tableau file that can be use as an example.
+Sample visualisation in Tableau.
