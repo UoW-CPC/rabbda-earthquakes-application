@@ -33,16 +33,18 @@ To more detail, static data related to cities and seismograph stations are being
 
 
  ## Getting started
- The following instructions guides you on to set up the project up on your Hadoop environment.
+The following instructions guide you on how to set up the project on your Hadoop environment.
 
  ### Download the repository
  The initial step is to download the repository in your Hadoop machine. To do so, in terminal run the following command:
  ```
  git clone --single-branch --branch release-0.0 https://github.com/UoW-CPC/rabbda-earthquakes-portal.git
  ```
+ This command clone specifically release-0.0 branch.
 
  ### Running the application
- Having download the repository you can now run the application and perform all the 6 steps mentioned in the introduction paragraph.
+ Having download the repository you can now run the application and perform all the 6 steps mentioned in the introduction section.
+
  First move to the working directory by executing the command:
  ```
  cd rabbda-earthquakes-portal
@@ -52,14 +54,16 @@ To more detail, static data related to cities and seismograph stations are being
  ls
  ```
  There you can see seven folders:
- * _bash_, folder which contains the bash scripts used to used to download the earthquakes from the Rest API, step 1.
- * _data_, data sets for cities and seismographic station.
- * _hive_, queries to run the ETL pipeline, step 3, and advanced query, step 5.
- * _python_, scripts to perform steps 2 and 4.
- * _sample-data_,
- * _spark_, scripts to perform step 5.
- * _tableau_, to perform step 5.
- * _README.md_, project description file.
+  * _data_, data sets for cities and seismographic station.
+  * _hiveql_, queries to run the ETL pipeline, step 3, and advanced query, step 5.
+  * _results_,
+  * _sample-data_,
+  * _spricts_python_, scripts to perform steps 2 and 4.
+  * _scripts_shell_, folder which contains the bash scripts used to used to download the earthquakes from the Rest API, step 1.
+  * _scripts_spark_, scripts to perform step 5.
+  * _slides_
+  * _tableau_, to perform step 5.
+  * _README.md_, project description file.
 
 
 
