@@ -3,14 +3,14 @@
 ## Introduction
 This application is a proof of concept design that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
 
-## Release:0.0
+### Release:0.0
 This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
-Additionally, Shell and Python scripts are being used to perform several tasks,such data acquisition and preparation.
+Additionally, Shell and Python scripts are being used to perform several tasks, e.g. data acquisition and preparation.
 
 From architecture's point of view, the application utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data
 from different sources, and provides answers to complex research questions.
 
-This is a step-by-step guide that includes all application phases:
+This is a step-by-step guide that describes all application phases:
  1. Data acquisition: Request the data from a Rest API.
  2. Data preparation: Pre-process the data with Python.
  3. Data ingestion: upload the data to HDFS.
