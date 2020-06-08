@@ -221,14 +221,21 @@ hdfs dfs -ls /earthquakes_portal
 
  Now we need to create the Seismograph
  ```
+ # First move to the data folder.
  cd ../data
- # HDFS commands:
+
+ # HDFS COMMANDS:
  # locate the CSV file created at step 10 of the ETL pipeline.
  hdfs dfs -ls /YOUR_HDFS_PATH
- # download the file file from the HDFS.
- hdfs dfs -get /YOUR_HDFS_PATH/earthquakes_closest_city_station.csv earthquakes_closest_city_station.csv
+ # The data are writen in HDFS path /YOUR_HDFS_PATH/data/000000_0
+ # See a sample of these data.
+ hdfs dfs -tail /YOUR_HDFS_PATH/earthquakes_portal/data/000000_0
+ # download the file file from HDFS.
+ hdfs dfs -get /YOUR_HDFS_PATH/data/000000_0 earthquakes_closest_city_station.csv
  # Make sure the fils is in the data folder.
  ls
+
+ # BUILD SEISMOGRAPHS LINKS
  # Move to the scripts_python folder.
  cd ../scripts_python
  # Create the seismographs.
@@ -237,11 +244,19 @@ hdfs dfs -ls /earthquakes_portal
  cd ../data
  ls # check for a file named as results.csv
  head results.csv # see a sample of the data
+
+ HDFS COMMANDS:
  # Upload the results to the HDFS
- # Command: hdfs dfs -put /"your_local_dir_path/file" /"your_hdfs_dir_path"
+ # Command: hdfs dfs -put results.csv /YOUR_HDFS_PATH
  # Sample commands:
- hdfs dfs -put /data/results.csv /earthquakes_portal
+ hdfs dfs -put results.csv /earthquakes_portal
  # Warning: you must specify a valid HDFS path
+ # Verify tha the file successfully upleaded to HDFS
+ # Command: hdfs dfs -ls /YOUR_HDFS_PATH
+ # Sample commands:
+ hdfs dfs -ls /earthquakes_portal
+
+ HIVE COMMANDS:
  # Import the results to Hive
  # Important: edit the results.sql file so to point to the right HDFS path.
  cd ../hiveql
