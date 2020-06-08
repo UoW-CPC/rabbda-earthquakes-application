@@ -79,14 +79,14 @@ The following instructions guide you on how to set up the project on your Hadoop
 
 This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts.
+HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts. However, it can run to every Hadoop environment that
 
 Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
-
+that runs the utilised services.
  ```
  pip install -r requirements.txt
  ```
- #### Now we are ready to go through the various phases.
+
 
 __Tip:__ changing directories with terminal commands.
  ```
@@ -95,7 +95,7 @@ __Tip:__ changing directories with terminal commands.
  cd ..          #move to parent folder
  pwd            #pring working directory
  ```
-
+ #### Now we are ready to go through the various phases.
  #### 1. Data acquisition: Request data from a Rest API.
 
 Move to the scripts_shell folder to download the earthquakes by executing the command:
