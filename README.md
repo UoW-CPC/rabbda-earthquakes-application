@@ -262,6 +262,12 @@ hdfs dfs -ls /earthquakes_portal
  cd ../hiveql
  hive -f results.sql
  ```
+
+ At this point the objective of the ETL pipeline is fulfilled.
+ The three different data sets have been merged to one and we produced data such as earthquake's closest city,
+ seismograph station and link to seismograph.
+
+
  ####  6. Further analysis:
 
 
