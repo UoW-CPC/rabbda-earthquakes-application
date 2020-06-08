@@ -64,17 +64,17 @@ The following instructions guide you on how to set up the project on your Hadoop
  ls
  ```
  There you can see eight folders and two files:
-  * _data_ - folder - contains datasets for cities and seismograph station.
-  * _hiveql - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
-  * _sample_data_ - folder - contains data produced in a demo execution.
-  * _sample_output_ - folder - contains terminal output for a demo execution.
-  * _sample_tableau_ - folder - contains visualisations for a demo execution, phase 6.
-  * _spricts_python_ - folder - contains scripts to perform phases 2 and 5.
-  * _scripts_shell_ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
-  * _scripts_spark_ - folder - contains scripts to perform further analysis in phase 6.
-  * _release-0.ppt_ - file - slides with material related to this release, e.g. architecture, results.
-  * _README.md_ - file - contains
-  * _requirements_ - file - contains
+  * __data__ - folder - contains datasets for cities and seismograph station.
+  * __hiveql__ - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
+  * __sample_data__ - folder - contains data produced in a demo execution.
+  * __sample_output__ - folder - contains terminal output for a demo execution.
+  * __sample_tableau__ - folder - contains visualisations for a demo execution, phase 6.
+  * __spricts_python__ - folder - contains scripts to perform phases 2 and 5.
+  * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
+  * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
+  * __release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
+  * __README.md__ - file - contains
+  * __requirements__ - file - contains
 
 __Tip:__ changing directories with terminal commands.
  ```
