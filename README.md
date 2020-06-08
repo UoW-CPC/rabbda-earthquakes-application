@@ -95,7 +95,8 @@ __Tip:__ changing directories with terminal commands.
  cd ..          #move to parent folder
  pwd            #pring working directory
  ```
- #### Now we are ready to go through the various phases.
+ #### Now we are ready to go through the various phases:
+
  #### 1. Data acquisition: Request data from a Rest API.
 
 Move to the scripts_shell folder to download the earthquakes by executing the command:
@@ -109,8 +110,8 @@ Move to the scripts_shell folder to download the earthquakes by executing the co
  cat downloadEarthquakesData.sh
  ```
 
- The script is develop to download earthquakes data for a single year, and you can also define minimum magnitude.
- In this demo we will download data for the year 2019 and minimum magnitude of 6.
+ The script is develop to download earthquakes data for a single year; additionally, you can define magnitude.
+ In this demo we will download earthquakes data for the year 2019 and magnitude over 6.
  The script is already configured, so we only need to run the following command:
 
  ```
