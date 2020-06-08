@@ -287,5 +287,9 @@ Tableau is a proprietary tool and requires a license to use.
 Folder sample_tableau has a Tableau file that can be use as an example.
 Sample visualisation in Tableau.
 
+
+Clean
+
+hive -e 'DROP DATABASE IF EXISTS earthquakes CASCADE;'
 ## Architecture
 

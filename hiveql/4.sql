@@ -1,3 +1,5 @@
+set hive.auto.convert.join = false;
+
 use earthquakes;
 
 drop table if exists earthquakes_closest_city;
