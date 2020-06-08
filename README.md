@@ -10,6 +10,7 @@ RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the [Centre 
 
 The project objective is to provide students and practitioners access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
 
+RABBDA is the first attempt to merge a Science Gateway with a KREL (knowledge repository and learning) to facilitate the comprehension of the various aspects of the portal.
 For more information, please review RABBDA at readthedocs.io
 
 ### Release:0.0
@@ -121,7 +122,7 @@ Move to the scripts_shell folder to download the earthquakes by executing the co
   ```
  head ../data/earthquakes.csv
  ```
- Move back to the project folder:
+ Move back to project's folder:
  ```
  cd ..
  ```
@@ -164,9 +165,9 @@ Move to the scripts_shell folder to download the earthquakes by executing the co
  ```
 # Command: hdfs dfs -put /"your_local_dir_path/file" /"your_hdfs_dir_path"
 # Sample commands:
-hdfs dfs -put /data/earthquakes_final.csv /earthquakes_portal
-hdfs dfs -put /data/cities.csv /earthquakes_portal
-hdfs dfs -put /data/seismograph_stations.csv /earthquakes_portal
+hdfs dfs -put data/earthquakes-final.csv /earthquakes_portal
+hdfs dfs -put data/cities.csv /earthquakes_portal
+hdfs dfs -put data/seismograph-stations.csv /earthquakes_portal
 # Warning: you must specify a valid HDFS path
  ```
 
