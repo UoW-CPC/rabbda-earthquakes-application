@@ -169,6 +169,10 @@ hdfs dfs -put data/earthquakes-final.csv /earthquakes_portal
 hdfs dfs -put data/cities.csv /earthquakes_portal
 hdfs dfs -put data/seismograph-stations.csv /earthquakes_portal
 # Warning: you must specify a valid HDFS path
+# To view the file in the HDFS run the follow:
+# Command: hdfs dfs -ls /"your_hdfs_dir_path"
+# Sample command:
+hdfs dfs -ls /earthquakes_portal
  ```
 
  #### 4. ETL pipeline: Execute Hive queries.
