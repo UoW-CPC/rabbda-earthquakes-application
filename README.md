@@ -2,7 +2,7 @@
 
 ## Introduction
 This is a proof of concept application that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
-Additionally, by implementing various releases, someone can understand how a project evolves through multiple iterations.
+Additionally, by implementing various releases, we present how a project evolves through multiple iterations.
 
 __RABBDA project:__
 
