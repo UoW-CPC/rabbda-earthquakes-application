@@ -6,7 +6,7 @@ Additionally, by implementing various releases, someone can understand how a pro
 
 __RABBDA project:__
 
-RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the Centre of Parallel Computing - University of Westminster https://www.westminster.ac.uk/research/groups-and-centres/centre-for-parallel-computing.
+RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the [Centre of Parallel Computing](https://www.westminster.ac.uk/research/groups-and-centres/centre-for-parallel-computing) - University of Westminster.
 
 The project objective is to provide students and practitioners, access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
 
@@ -74,7 +74,7 @@ The following instructions guide you on how to set up the project on your Hadoop
   * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
   * __release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
   * __README.md__ - file - contains
-  * __requirements__ - file - contains
+  * __requirements.txt__ - file - contains
 
 __Tip:__ changing directories with terminal commands.
  ```
@@ -84,10 +84,18 @@ __Tip:__ changing directories with terminal commands.
  pwd            #pring working directory
  ```
 
+This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
+
+HDP 2.6.5 comes with Python 2.7 pre-installed; therefore, this version is being used for our scripts.
+
+Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
+
  ```
- Python 2.7
  pip install -m requirements.txt
  ```
+
+Now we are ready to go through all phases.
+
  #### 1. Data acquisition: Request data from a Rest API.
 
 Move to the scripts_shell folder to download the earthquakes by executing the command:
