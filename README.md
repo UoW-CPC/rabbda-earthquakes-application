@@ -8,9 +8,9 @@ __RABBDA project:__
 
 RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the [Centre of Parallel Computing](https://www.westminster.ac.uk/research/groups-and-centres/centre-for-parallel-computing) - University of Westminster.
 
-The project objective is to provide students and practitioners, access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
+The project objective is to provide students and practitioners access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
 
-For more information, please review RABBDA context at readthedocs.io
+For more information, please review RABBDA at readthedocs.io
 
 ### Release:0.0
 This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
@@ -37,7 +37,7 @@ This demonstration utilises earthquakes data, source: [USGS science for a changi
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
 Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
 
-To more detail, static data related to cities and seismograph stations are being associated with earthquakes data acquired from the Rest API. The result of this process produces information such as earthquakes closest cities and seismographic stations, and links to seismographs.
+To more detail, static data for cities and seismograph stations are being associated with earthquakes data acquired from the Rest API. The result of this process produces information such as earthquakes closest cities and seismographic stations, and links to seismographs.
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
@@ -63,7 +63,7 @@ The following instructions guide you on how to set up the project on your Hadoop
  ```
  ls
  ```
- There you can see eight folders and two files:
+ There you can see seven folders and three files:
   * __data__ - folder - contains datasets for cities and seismograph station.
   * __hiveql__ - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
   * __sample_data__ - folder - contains data produced in a demo execution.
@@ -73,8 +73,20 @@ The following instructions guide you on how to set up the project on your Hadoop
   * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
   * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
   * __release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
-  * __README.md__ - file - contains
-  * __requirements.txt__ - file - contains
+  * __README.md__ - file - project information and instructions on how to use the application.
+  * __requirements.txt__ - file - Python libraries used by this application.
+
+
+This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
+
+HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts.
+
+Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
+
+ ```
+ pip install -r requirements.txt
+ ```
+ #### Now we are ready to go through the various phases.
 
 __Tip:__ changing directories with terminal commands.
  ```
@@ -83,18 +95,6 @@ __Tip:__ changing directories with terminal commands.
  cd ..          #move to parent folder
  pwd            #pring working directory
  ```
-
-This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
-
-HDP 2.6.5 comes with Python 2.7 pre-installed; therefore, this version is being used for our scripts.
-
-Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
-
- ```
- pip install -m requirements.txt
- ```
-
-Now we are ready to go through all phases.
 
  #### 1. Data acquisition: Request data from a Rest API.
 
