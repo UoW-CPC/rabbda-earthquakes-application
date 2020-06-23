@@ -11,7 +11,7 @@ RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the [Centre 
 The project objective is to provide students and practitioners access to Big Data technologies and learning material. The earthquakes portal is designed to serve RABBDA project as an illustration on how to utilise Big Data technologies so to build complex architectures.
 
 RABBDA is the first attempt to merge a Science Gateway with a KREL (knowledge repository and learning), called [SMARTEST](https://smartest-repo.herokuapp.com/) to facilitate the comprehension of the various aspects of the portal.
-For more information, please review RABBDA at readthedocs.io
+For more information, please review RABBDA [here](https://rabbda.readthedocs.io/).
 
 ### Release:0.0
 This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
@@ -94,7 +94,7 @@ __Tip:__ changing directories with terminal commands.
  ls             #list all folders and files
  cd folder_name #move to folder
  cd ..          #move to parent folder
- pwd            #pring working directory
+ pwd            #print working directory
  ```
  #### Now we are ready to go through the various phases:
 
