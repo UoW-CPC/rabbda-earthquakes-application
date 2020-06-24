@@ -8,9 +8,9 @@ spark = SparkSession.builder.appName("SparkSQL").getOrCreate()
 
 def mapper(line):
     fields = line.split(',')
-    return Row(place=str(fields[17].encode("utf-8")))
+    return Row(place=str(fields[9].encode("utf-8")))
 
-lines = spark.sparkContext.textFile("hdfs:///user/maria_dev/earthquakes-final.csv")
+lines = spark.sparkContext.textFile("hdfs:///user/maria_dev/data/000000_0")
 earthquakes = lines.map(mapper)
 
 # Infer the schema, and register the DataFrame as a table.
