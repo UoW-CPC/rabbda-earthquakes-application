@@ -66,29 +66,19 @@ The following instructions guide you on how to set up the project on your Hadoop
  ```
  ls
  ```
- There you can see six folders and three files:
+ There you can see four folders and three files:
   * __conf__ - folder - contains application's configuration file.
-  * __data__ - folder - contains datasets for cities and seismograph station.
-    * __earthquakes-history__ - folder - contains datasets for cities and seismograph station.
+  * __data__ - folder - contains datasets related to the application.
+    * __earthquakes-history__ - folder - contains earthquakes related data.
     * __hive-etl-pipeline__ - folder - contains datasets for cities and seismograph station.
-  * __logs__ - folder - contains datasets for cities and seismograph station.
-  * __scripts__ - folder - contains datasets for cities and seismograph station.
-    * __application__ - folder - contains datasets for cities and seismograph station.
-    * __earthquakes_history__ - folder - contains datasets for cities and seismograph station.
-    * __hive_etl_pipeline__ - folder - contains datasets for cities and seismograph station.
-    * __hive_ql__ - folder - contains datasets for cities and seismograph station.
+  * __logs__ - folder - contains application logs.
+  * __scripts__ - folder - contains the scripts for the various application components.
+    * __application__ - folder - contains the scripts for the orchestration component.
+    * __earthquakes_history__ - folder - contains the scripts to downoload the earttthquakes data and upload them to HDFS.
+    * __hive_etl_pipeline__ - folder - contains the scripts to execute the ETL pipeline.
+    * __hive_ql__ - folder - contains the Hive queries used by the ETL pipeline.
   * __earthquakes-portal-release-1.ppt__ - file - slides with material related to this release, e.g. architecture, results.
-  * __jupyter_analysis__ -
-  * __README.md__ - file - project information and instructions on how to use the application.
-  * __requirements.txt__ - file - Python libraries used by this application.
-
-  * __hiveql__ - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
-  * __sample_data__ - folder - contains data produced in a demo execution.
-  * __sample_tableau__ - folder - contains visualisations for a demo execution, phase 6.
-  * __spricts_python__ - folder - contains scripts to perform phases 2 and 5.
-  * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
-  * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
-  * __earthquakes-portal-release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
+  * __jupyter_analysis__ - a Jupyter notebook that analyse the results of the ETL pipeline.
   * __README.md__ - file - project information and instructions on how to use the application.
   * __requirements.txt__ - file - Python libraries used by this application.
 
@@ -114,3 +104,11 @@ __Tip:__ changing directories with terminal commands.
  pwd            #print working directory
  ```
  #### Now we are ready to go through the various phases:
+
+
+config
+
+run
+
+logs
+
