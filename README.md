@@ -95,7 +95,7 @@ HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is
 
 Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
  ```
- pip install -r requirements.txt
+ sudo pip install -r requirements.txt
  ```
 In case pip is not installed, run the following to install it:
 ```
