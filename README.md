@@ -278,15 +278,15 @@ Apache Spark is a powerful technology that can be utilised to perform several co
 This example demonstrates that we can use several technologies in our solution and also we can analyse our dataset with several perspectives.
 
 Therefore, as an introduction to Spark will answer questions like:
-* How many earthquakes there were for each month?
+* How many earthquakes there were for each magnitude?
 * How many earthquakes there were for each country?
 
 Spark has two major releases Spark and Spark2.
 For question one we use Spark and for question two we use Spark2.
 ```
 cd ../scripts_spark
-spark-submit earthquakes_per_mount.py
-spark-submit earthquakes_per_year.py
+spark-submit eq-spark-groupByMangitude.py
+spark-submit eq-spark-sql-groupByCountry.py
 ```
 
 ##### Advanced research questions with Hive.
