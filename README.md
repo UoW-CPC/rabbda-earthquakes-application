@@ -4,6 +4,10 @@
 This is a proof of concept application that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
 Additionally, by implementing various releases, we present how a project evolves through multiple iterations.
 
+In case you have reviewed and tried [Release-0](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-0.0),
+you might have noticed that it is required to perform all steps manually.
+Release-1 tries to automate this for you, the only requirement here is to work with a configuration file and start the application.
+
 __RABBDA project:__
 
 RABBDA (Reduce Access Barriers to Big Data Analytics) is created by the [Centre of Parallel Computing](https://www.westminster.ac.uk/research/groups-and-centres/centre-for-parallel-computing) - University of Westminster.
@@ -13,4 +17,49 @@ The project objective is to provide students and practitioners access to Big Dat
 RABBDA is the first attempt to merge a Science Gateway with a KREL (knowledge repository and learning), called [SMARTEST](https://smartest-repo.herokuapp.com/) to facilitate the comprehension of the various aspects of the portal.
 For more information, please review RABBDA [here](https://rabbda.readthedocs.io/).
 
-### Release:0.0
+### Release:1.0
+This release extends Release-0 by creating a workflow  that automates the various steps, from data  acquisition to Hive queries.
+Also, introduces some advanced concepts of Hive.
+
+From architecture's point of view, the application does the same as release-0, utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data from different sources, and provides answers to complex research questions.
+
+The following steps are being automated by the application:
+ 1. Data acquisition: Request data from a Rest API.
+ 2. Data preparation: Pre-process data with Python.
+ 3. Data ingestion: Upload data to HDFS.
+ 4. ETL pipeline: Execute Hive queries to transform and join the data.
+ 5. ETL pipeline results: Execute Hive query to create links to seismographs.
+
+ Additionally, you can perform further analysis, like we did in Release-0.
+ In this release we perform this through a Jupyter Notebook.
+
+For extra information on the various phases, please refer to related folders.
+
+
+This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
+
+USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
+Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
+
+To more detail, static data for cities and seismograph stations are being associated with earthquakes data acquired from the Rest API. The result of this process produces information such as earthquakes closest cities and seismographic stations, and links to seismographs.
+
+ __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
+
+
+ ## Getting started
+The following instructions guide you on how to set up the project on your Hadoop environment.
+
+ ### Download the repository
+ The initial step is to download the repository in your Hadoop machine. To do so, in terminal run the following command:
+ ```
+ git clone --single-branch --branch release-0.0 https://github.com/UoW-CPC/rabbda-earthquakes-portal.git
+ ```
+ This command clones specifically release-0.0 branch.
+
+ ### Running the application
+ Having download the repository you can now run the application and perform all the 6 phases mentioned in the introduction section.
+
+ First move to the working directory by executing the command:
+ ```
+ cd rabbda-earthquakes-portal
+
