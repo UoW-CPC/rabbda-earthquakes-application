@@ -171,10 +171,6 @@ In case you only need to review our sample results click [here](https://github.c
 
  You have now completed this demo, please review the presentation 'earthquakes-portal-release-1.pptx' to understand architecture and functionality of the application.
 
-As a next step you can try release-2 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-2.0).
-Release-2 includes two solutions on how you can import real time data to your system.
-The first solution is related to earthquakes data and the second to twitter data.
-
  ### Clean Data
 
 You can clean the data from Hive by dropping the Database and its content:
@@ -186,3 +182,8 @@ Also, to  delete application related  data, remove the  following files:
 * Under folder data/earthquakes-history remove all CSV files and history_db.json.
 * Under folder data/hive-etl-pipeline remove  the pipeline_db.json.
 * under folder logs remove all .log  files.
+
+ ### Further development
+As a next step you can try extending this application by importing real time data to your system.
+1. To see how you can import to earthquakes real-time data to HDFS by utilising Apache Flume review [here](https://github.com/UoW-CPC/rabbda-earthquakes-realtime).
+2. To see how you can import real-time twitter data by utilising Apache Kafka review [here](https://github.com/UoW-CPC/rabbda-kafka-twitter).
