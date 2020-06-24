@@ -251,12 +251,12 @@ hdfs dfs -ls /user/maria_dev
  # Upload the results to the HDFS
  # Command: hdfs dfs -put results.csv /YOUR_HDFS_PATH
  # Sample commands:
- hdfs dfs -put results.csv /earthquakes_portal
+ hdfs dfs -put results.csv /user/maria_dev/results.csv
  # Warning: you must specify a valid HDFS path
  # Verify tha the file successfully upleaded to HDFS
  # Command: hdfs dfs -ls /YOUR_HDFS_PATH
  # Sample commands:
- hdfs dfs -ls /earthquakes_portal
+ hdfs dfs -ls /user/maria_dev/
 
  HIVE COMMANDS:
  # Import the results to Hive
