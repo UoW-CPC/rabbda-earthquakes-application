@@ -150,11 +150,11 @@ To more detail you can check the following files:
 plus a database with all previous requests.
 4. __hive-etl-pipeline.log:__ contains information about the ETL pipeline, e.g. Hive logs.
 5. __hive-etl-pipeline:__ folder under the data folder which contains static data for cities and seismograph-stations,
-plus a database from which the pipeline decides if it must create the Hive database, tables, and upload those static data.
+plus a database from which the pipeline decides if it must create the Hive database, tables, and upload static data.
 
 __Warning:__ This process is time consuming and resource intensive. Therefore be patient and be careful how many data you want to process.
 
-##### Data visualisations with Tableau.
+#### Data visualisations with Tableau.
 An important aspect of every big data solution is the visualisation of the data and the results of each analysis process.
 
 Jupyter Notebooks is a well established data  analytics solutions that allow us to perform advanced analytics and create graphs and visualisations.
