@@ -233,7 +233,7 @@ hdfs dfs -ls /user/maria_dev
  # See a sample of these data.
  hdfs dfs -tail /user/maria_dev/data/000000_0
  # download the file file from HDFS.
- hdfs dfs -get /user/Maria_dev/data/000000_0 earthquakes_closest_city_station.csv
+ hdfs dfs -get /user/maria_dev/data/000000_0 earthquakes_closest_city_station.csv
  # Make sure the fils is in the data folder.
  ls
 
