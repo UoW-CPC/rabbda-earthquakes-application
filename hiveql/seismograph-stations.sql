@@ -13,6 +13,6 @@ create table seismograph_stations
   )
 row format delimited fields terminated by ',';
 
-LOAD DATA INPATH '/YOUR_HDFS_PATH/seismograph-stations.csv'
+LOAD DATA INPATH '/user_maria_dev/seismograph-stations.csv'
 
  OVERWRITE INTO TABLE seismograph_stations;

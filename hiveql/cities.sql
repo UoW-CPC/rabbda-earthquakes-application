@@ -18,4 +18,4 @@ create table cities
   )
 row format delimited fields terminated by ',';
 
-LOAD DATA INPATH '/YOUR_HDFS_PATH/cities.csv' OVERWRITE INTO TABLE cities;
+LOAD DATA INPATH '/user/maria_dev/cities.csv' OVERWRITE INTO TABLE cities;
