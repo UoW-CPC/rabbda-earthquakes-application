@@ -185,5 +185,5 @@ Also, to  delete application related  data, remove the  following files:
 
  ### Further development
 As a next step you can try extending this application by importing real time data to your system.
-1. To see how you can import to earthquakes real-time data to HDFS by utilising Apache Flume review [here](https://github.com/UoW-CPC/rabbda-earthquakes-realtime).
+1. To see how you can import earthquakes real-time data to HDFS by utilising Apache Flume review [here](https://github.com/UoW-CPC/rabbda-earthquakes-realtime).
 2. To see how you can import real-time twitter data by utilising Apache Kafka review [here](https://github.com/UoW-CPC/rabbda-kafka-twitter).
