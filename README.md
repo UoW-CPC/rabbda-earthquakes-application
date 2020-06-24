@@ -111,10 +111,29 @@ __Tip:__ changing directories with terminal commands.
  ```
  #### Now we are ready to go through the various phases:
 
+ #### Edit the configuration file:
+Move to the conf folder to edit the configuration file:
+```
+cd conf
+# list all file
+ls
+# view the content of the file
+cat earthquakes-application.yaml
+```
+Edit configuration file according to your requirements. This files allows you to define 6 parameters:
+1. hdfs-path: set the path that application's data will be stored.
+2. download-list-of-years: 
+3.
+4.
+5.
+6.
 
-config
 
-run
+Move back to the parent folder:
+```
+cd..
+```
+#### run
 
-logs
+####logs
 
