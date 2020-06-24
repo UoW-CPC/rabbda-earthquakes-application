@@ -73,7 +73,7 @@ The following instructions guide you on how to set up the project on your Hadoop
   * __spricts_python__ - folder - contains scripts to perform phases 2 and 5.
   * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
   * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
-  * __release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
+  * __earthquakes-portal-release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
   * __README.md__ - file - project information and instructions on how to use the application.
   * __requirements.txt__ - file - Python libraries used by this application.
 
@@ -83,11 +83,13 @@ This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, ple
 HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts. However, it can run to every Hadoop environment that
 
 Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
-that runs the utilised services.
  ```
  pip install -r requirements.txt
  ```
-
+In case pip is not installed, run the following to install it:
+```
+sudo yum install python-pip
+```
 
 __Tip:__ changing directories with terminal commands.
  ```
@@ -165,16 +167,16 @@ Move to the scripts_shell folder to download the earthquakes by executing the co
  ```
 # Command: hdfs dfs -put /"your_local_dir_path/file" /"your_hdfs_dir_path"
 # Sample commands:
-hdfs dfs -put data/earthquakes-final.csv /earthquakes_portal
-hdfs dfs -put data/cities.csv /earthquakes_portal
-hdfs dfs -put data/seismograph-stations.csv /earthquakes_portal
+hdfs dfs -put data/earthquakes-final.csv /user/maria_dev/earthquakes-final.csv
+hdfs dfs -put data/cities.csv /user/maria_dev/cities.csv
+hdfs dfs -put data/seismograph-stations.csv /user/maria_dev/seismograph-stations.csv
 # Warning: you must specify a valid HDFS path
  ```
  To view the file in the HDFS run the follow:
  ```
 # Command: hdfs dfs -ls /"your_hdfs_dir_path"
 # Sample command:
-hdfs dfs -ls /earthquakes_portal
+hdfs dfs -ls /user/maria_dev
  ```
  #### 4. ETL pipeline: Execute Hive queries.
 
