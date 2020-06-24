@@ -51,7 +51,7 @@ To more detail, static data for cities and seismograph stations are being associ
 
 
  ## Getting started
-The following instructions guide you on how to set up the project on your Hadoop environment.
+The following instruction guides you on how to set up the project on your Hadoop environment.
 
  ### Download the repository
  The initial step is to download the repository in your Hadoop machine. To do so, in terminal run the following command:
@@ -124,6 +124,7 @@ Edit configuration file according to your requirements. This files allows you to
 1. hdfs-path: set the path that application's data will be stored.
 2. download-list-of-years: define a list of years to request, e.g. 2010,2015,2016.
 3. download-group-of-years: define a range of years to request, e.g. 2010 to 2012.
+
 __Important:__ You must define only one of the two above options.
 4. download-magnitude-over: set magnitude values to request.
 5. download-again-historical-data: in case you want to request again earthquakes data that have been request in the past you mus set this value to True.
