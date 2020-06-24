@@ -147,7 +147,7 @@ To more detail you can check the following files:
 1. __application.log:__ contains information about the various execution phases of the orchestration component.
 2. __earthquakes-history.log:__ contains information about the data acquisition and preparation phases.
 3. __earthquakes-history:__ folder under the data folder which contains the requested data,
-plus a database of the previous requests.
+plus a database with all previous requests.
 4. __hive-etl-pipeline.log:__ contains information about the ETL pipeline, e.g. Hive logs.
 5. __hive-etl-pipeline:__ folder under the data folder which contains static data for cities and seismograph-stations,
 plus a database from which the pipeline decides if it must create the Hive database, tables, and upload the static data.
