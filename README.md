@@ -228,12 +228,12 @@ hdfs dfs -ls /user/maria_dev
 
  # HDFS COMMANDS:
  # locate the CSV file created at step 10 of the ETL pipeline.
- hdfs dfs -ls /YOUR_HDFS_PATH
- # The data are writen in HDFS path /YOUR_HDFS_PATH/data/000000_0
+ hdfs dfs -ls /user/maria_dev/
+ # The data are writen in HDFS path /user/maria_dev/data/000000_0
  # See a sample of these data.
- hdfs dfs -tail /YOUR_HDFS_PATH/earthquakes_portal/data/000000_0
+ hdfs dfs -tail /user/maria_dev/data/000000_0
  # download the file file from HDFS.
- hdfs dfs -get /YOUR_HDFS_PATH/data/000000_0 earthquakes_closest_city_station.csv
+ hdfs dfs -get /user/Maria_dev/data/000000_0 earthquakes_closest_city_station.csv
  # Make sure the fils is in the data folder.
  ls
 
