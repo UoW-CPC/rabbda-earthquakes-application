@@ -139,7 +139,49 @@ cd..
 cd scripts/application
 python start_application.py
 ```
+When you perform this action the application will start running,
+open another terminal and move to the directories data and logs to monitor the various phases.
 
+To more detail you can check the following files:
+1. __application.log:__ contains information about the various execution phases of the orchestration component.
+2. __earthquakes-history.log:__ contains information about the data acquisition and preparation phases.
+3. __earthquakes-history:__ folder under the data folder which contains the requested data,
+plus a database of the previous requests.
+4. __hive-etl-pipeline.log:__ contains information about the ETL pipeline, e.g. Hive logs.
+5. __hive-etl-pipeline:__ folder under the data folder which contains static data for cities and seismograph-stations,
+plus a database from which the pipeline decides if it must create the Hive database, tables, and upload the static data.
 
-####logs
+__Warning:__ This process is time consuming and resource intensive. Therefore be patient and be careful how many data you want to process.
 
+##### Data visualisations with Tableau.
+An important aspect of every big data solution is the visualisation of the data and the results of each analysis process.
+
+Jupyter Notebooks is a well established data  analytics solutions that allow us to perform advanced analytics and create graphs and visualisations.
+Also, Jupyter enables the user to interactively operate with various technologies, in our case we interact with Hive.
+
+To this project Jupyter is being used to query Hive and review the results of the  ETL  pipeline, e.g. closest city, linkk to the seismograph.
+
+Jupyter is an source tool free to use. The most common installation is by using [Anaconda](https://www.anaconda.com/).
+You can install Anaconda and work with the Notebook earthquakes-portal-release-1-results.ipynb to analyse your own results.
+
+In case you only need to review the results click [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/blob/release-1.0/earthquakes-portal-release-1-results.ipynb).
+
+## Demo completion
+
+ You have now completed the demo, please review the presentation 'earthquakes-portal-release-1.pptx' to understand the architecture, functionality and limitations.
+
+As a next step you can try release-2 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-2.0).
+Release-2 includes two solutions on how you can import real time data to your system.
+The first solution is related to earthquakes data and the second to twitter data.
+
+ ### Clean Data
+
+You can clean the data from Hive by dropping the Database and its content:
+```
+hive -e 'DROP DATABASE IF EXISTS earthquakes CASCADE;'
+```
+
+Also, to  delete application related  data, remove the  following:
+* Under folder data/earthquakes-history/ remove all CSV files and history_db.json
+* Under folder data/hive-etl-pipeline/ remove  the pipeline_db.json
+* under folder logs remove all .log  files.
