@@ -30,7 +30,7 @@ The following steps are being automated by the application:
  2. Data preparation: Pre-process data with Python.
  3. Data ingestion: Upload data to HDFS.
  4. ETL pipeline: Execute Hive queries to transform and join the data.
- 5. ETL pipeline results: Execute Hive query to create links to seismographs.
+ 5. ETL pipeline results: Execute Hive query to create seismograph URLs.
 
  Additionally, you can perform further analysis, like we did in Release-0.
  In this release we do this through a Jupyter Notebook.
