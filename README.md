@@ -30,9 +30,6 @@ This is a step-by-step guide that describes all application phases:
     * Advanced research questions with Hive.
     * Data visualisations with Tableau.
 
-For extra information on the various phases, please refer to related folders.
-
-
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
