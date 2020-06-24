@@ -68,7 +68,6 @@ The following instructions guide you on how to set up the project on your Hadoop
   * __data__ - folder - contains datasets for cities and seismograph station.
   * __hiveql__ - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
   * __sample_data__ - folder - contains data produced in a demo execution.
-  * __sample_output__ - folder - contains terminal output for a demo execution.
   * __sample_tableau__ - folder - contains visualisations for a demo execution, phase 6.
   * __spricts_python__ - folder - contains scripts to perform phases 2 and 5.
   * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
