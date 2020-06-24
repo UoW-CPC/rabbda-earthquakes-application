@@ -31,9 +31,7 @@ The following steps are being automated by the application:
  5. ETL pipeline results: Execute Hive query to create links to seismographs.
 
  Additionally, you can perform further analysis, like we did in Release-0.
- In this release we perform this through a Jupyter Notebook.
-
-For extra information on the various phases, please refer to related folders.
+ In this release we do this through a Jupyter Notebook.
 
 
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
@@ -43,7 +41,7 @@ Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/e
 
 To more detail, static data for cities and seismograph stations are being associated with earthquakes data acquired from the Rest API. The result of this process produces information such as earthquakes closest cities and seismographic stations, and links to seismographs.
 
- __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
+ __Keywords:__ Big Data, Hadoop, HDFS, Hive, Rest API, Python, Jupyter Notebooks.
 
 
  ## Getting started
@@ -52,14 +50,67 @@ The following instructions guide you on how to set up the project on your Hadoop
  ### Download the repository
  The initial step is to download the repository in your Hadoop machine. To do so, in terminal run the following command:
  ```
- git clone --single-branch --branch release-0.0 https://github.com/UoW-CPC/rabbda-earthquakes-portal.git
+ git clone --single-branch --branch release-1.0 https://github.com/UoW-CPC/rabbda-earthquakes-portal.git
  ```
- This command clones specifically release-0.0 branch.
+ This command clones specifically release-1.0 branch.
 
  ### Running the application
- Having download the repository you can now run the application and perform all the 6 phases mentioned in the introduction section.
+ Having download the repository you can now run the application and perform all the 5 phases mentioned in the introduction section.
 
  First move to the working directory by executing the command:
  ```
  cd rabbda-earthquakes-portal
+```
 
+ Now execute the command:
+ ```
+ ls
+ ```
+ There you can see six folders and three files:
+  * __conf__ - folder - contains application's configuration file.
+  * __data__ - folder - contains datasets for cities and seismograph station.
+    * __earthquakes-history__ - folder - contains datasets for cities and seismograph station.
+    * __hive-etl-pipeline__ - folder - contains datasets for cities and seismograph station.
+  * __logs__ - folder - contains datasets for cities and seismograph station.
+  * __scripts__ - folder - contains datasets for cities and seismograph station.
+    * __application__ - folder - contains datasets for cities and seismograph station.
+    * __earthquakes_history__ - folder - contains datasets for cities and seismograph station.
+    * __hive_etl_pipeline__ - folder - contains datasets for cities and seismograph station.
+    * __hive_ql__ - folder - contains datasets for cities and seismograph station.
+  * __earthquakes-portal-release-1.ppt__ - file - slides with material related to this release, e.g. architecture, results.
+  * __jupyter_analysis__ -
+  * __README.md__ - file - project information and instructions on how to use the application.
+  * __requirements.txt__ - file - Python libraries used by this application.
+
+  * __hiveql__ - folder - contains queries to execute the ETL pipeline, phase 3, and perform further analysis, phase 6.
+  * __sample_data__ - folder - contains data produced in a demo execution.
+  * __sample_tableau__ - folder - contains visualisations for a demo execution, phase 6.
+  * __spricts_python__ - folder - contains scripts to perform phases 2 and 5.
+  * __scripts_shell__ - folder - contains a shell script used to download the earthquakes from the Rest API, phase 1.
+  * __scripts_spark__ - folder - contains scripts to perform further analysis in phase 6.
+  * __earthquakes-portal-release-0.ppt__ - file - slides with material related to this release, e.g. architecture, results.
+  * __README.md__ - file - project information and instructions on how to use the application.
+  * __requirements.txt__ - file - Python libraries used by this application.
+
+
+This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
+
+HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts. However, it can run to every Hadoop environment that
+
+Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
+ ```
+ pip install -r requirements.txt
+ ```
+In case pip is not installed, run the following to install it:
+```
+sudo yum install python-pip
+```
+
+__Tip:__ changing directories with terminal commands.
+ ```
+ ls             #list all folders and files
+ cd folder_name #move to folder
+ cd ..          #move to parent folder
+ pwd            #print working directory
+ ```
+ #### Now we are ready to go through the various phases:
