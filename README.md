@@ -150,7 +150,7 @@ To more detail you can check the following files:
 plus a database with all previous requests.
 4. __hive-etl-pipeline.log:__ contains information about the ETL pipeline, e.g. Hive logs.
 5. __hive-etl-pipeline:__ folder under the data folder which contains static data for cities and seismograph-stations,
-plus a database from which the pipeline decides if it must create the Hive database, tables, and upload the static data.
+plus a database from which the pipeline decides if it must create the Hive database, tables, and upload those static data.
 
 __Warning:__ This process is time consuming and resource intensive. Therefore be patient and be careful how many data you want to process.
 
