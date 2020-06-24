@@ -4,7 +4,7 @@
 This is a proof of concept application that aims to demonstrate how Big Data can be used to create complex Big Data solutions.
 Additionally, by implementing various releases, we present how a project evolves through multiple iterations.
 
-In case you have reviewed and tried [Release-0](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-0.0),
+For instance, in case you have reviewed and tried [Release-0](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-0.0),
 you might have noticed that it is required to perform all steps manually.
 Release-1 tries to automate this for you, the only requirement here is to work with a configuration file and start the application.
 
