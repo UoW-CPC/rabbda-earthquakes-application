@@ -32,14 +32,14 @@ The following steps are being automated by the application:
  4. ETL pipeline: Execute Hive queries to transform and join the data.
  5. ETL pipeline results: Execute Hive query to create seismograph URLs.
 
- Additionally, you can perform further analysis, like we did in Release-0.
- In this release we do this through a Jupyter Notebook.
-
 To more detail, the application performs the above 5 steps by utilising thrree components:
  1. __orchestration component__ - read the configuration files and passes control to the other components to perform its tasks.
  2. __earthquakes-history component__ - takes as input parameters like years and magnitude to perform steps 1-3.
  3. __hive-ETl-pipeline component__ -  takes as input parameters like HDFS path to perform step 4-5.
 
+ Additionally, you can perform further analysis, like we did in Release-0.
+ In this release we do this through a Jupyter Notebook.
+ 
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
