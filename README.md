@@ -154,18 +154,18 @@ plus a database from which the pipeline decides if it must create the Hive datab
 
 __Warning:__ This process is time consuming and resource intensive. Therefore be patient and be careful how many data you want to process.
 
-#### Data visualisations with Tableau.
+#### Data visualisations with Tableau
 An important aspect of every big data solution is the visualisation of the data and the results of each analysis process.
 
-Jupyter Notebooks is a well established data  analytics solutions that allow us to perform advanced analytics and create graphs and visualisations.
+Jupyter Notebooks is a well established data  analytics solutions that allow us to perform advanced analytics and create graphs, visualisations.
 Also, Jupyter enables the user to interactively operate with various technologies, in our case we interact with Hive.
 
-To this project Jupyter is being used to query Hive and review the results of the  ETL  pipeline, e.g. closest city, linkk to the seismograph.
+In this project Jupyter is being used to query Hive and review the results of the  ETL  pipeline, e.g. closest city, link to the seismograph.
 
-Jupyter is an source tool free to use. The most common installation is by using [Anaconda](https://www.anaconda.com/).
+Jupyter is an source tool, free to use. The most common installation is by using [Anaconda](https://www.anaconda.com/).
 You can install Anaconda and work with the Notebook earthquakes-portal-release-1-results.ipynb to analyse your own results.
 
-In case you only need to review the results click [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/blob/release-1.0/earthquakes-portal-release-1-results.ipynb).
+In case you only need to review our sample results click [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/blob/release-1.0/earthquakes-portal-release-1-results.ipynb).
 
 ## Demo completion
 
