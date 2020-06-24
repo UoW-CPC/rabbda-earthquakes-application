@@ -1,3 +1,5 @@
+use earthquakes;
+
 SELECT id,time,day,magnitude,country,city,population,city_distance
 FROM earthquakes_distance_to_all_cities
 WHERE id='ak018fcnsk91' AND population is NOT NULL

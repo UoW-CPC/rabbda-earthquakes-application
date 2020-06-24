@@ -255,7 +255,7 @@ hdfs dfs -ls /user/maria_dev
  # Warning: you must specify a valid HDFS path
  # Verify tha the file successfully upleaded to HDFS
  # Command: hdfs dfs -ls /YOUR_HDFS_PATH
- # Sample commands:
+ # Sample command:
  hdfs dfs -ls /user/maria_dev/
 
  HIVE COMMANDS:
@@ -295,7 +295,7 @@ In this example demonstrates that we can further analyse the output of the ETL p
 For instance to find how many people are affected by an earthquake is required to query Hive table earthquakes_distance_to_all_cities
 ```
 cd ../hiveql
-hive -f earthquake-population.csv
+hive -f earthquake-population.sql
 ```
 
  ##### Data visualisations with Tableau.
