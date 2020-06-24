@@ -310,7 +310,7 @@ Tableau is a proprietary tool and requires a license to use.
 Folder sample_tableau has a Tableau file that can be use as an example.
 Sample visualisation in Tableau.
 
- #### Demo Completion
+ #### Demo completion
 
  You have now completed the demo, please review the presentation 'earthquakes-portal-release-0.pptx' to understand the architecture, functionality and limitations.
 
