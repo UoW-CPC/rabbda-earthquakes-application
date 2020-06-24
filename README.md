@@ -33,13 +33,13 @@ The following steps are being automated by the application:
  5. ETL pipeline results: Execute Hive query to create seismograph URLs.
 
 To more detail, the application performs the above 5 steps by utilising thrree components:
- 1. __orchestration component__ - read the configuration files and passes control to the other components to perform its tasks.
+ 1. __orchestration component__ - reads the configuration file and passes control to the other components to perform their tasks.
  2. __earthquakes-history component__ - takes as input parameters like years and magnitude to perform steps 1-3.
  3. __hive-ETl-pipeline component__ -  takes as input parameters like HDFS path to perform step 4-5.
 
  Additionally, you can perform further analysis, like we did in Release-0.
  In this release we do this through a Jupyter Notebook.
- 
+
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
 USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which will be using to request earthquakes data.
@@ -75,16 +75,16 @@ The following instructions guide you on how to set up the project on your Hadoop
  There you can see four folders and four files:
   * __conf__ - folder - contains application's configuration file.
   * __data__ - folder - contains all application's data.
-    * __earthquakes-history__ - folder - contains earthquakes related data, and .
-    * __hive-etl-pipeline__ - folder - contains datasets for cities and seismograph station.
-  * __logs__ - folder - contains application logs.
+    * __earthquakes-history__ - folder - contains earthquakes related data, and a database with information about previous data acquisitions.
+    * __hive-etl-pipeline__ - folder - contains datasets for cities and seismograph station, and a database with information about the Hive database creation.
+  * __logs__ - folder - contains logs files, one for each three components.
   * __scripts__ - folder - contains the scripts for the various application components.
     * __application__ - folder - contains the scripts for the orchestration component.
-    * __earthquakes_history__ - folder - contains the scripts to downoload the earttthquakes data and upload them to HDFS.
-    * __hive_etl_pipeline__ - folder - contains the scripts to execute the ETL pipeline.
+    * __earthquakes_history__ - folder - contains the scripts for the earthquakes-history component.
+    * __hive_etl_pipeline__ - folder - contains the scripts for the hive-ETl-pipeline component.
     * __hive_ql__ - folder - contains the Hive queries used by the ETL pipeline.
   * __earthquakes-portal-release-1.ppt__ - file - slides with material related to this release, e.g. architecture, results.
-  * __jupyter_analysis__ - a Jupyter notebook that analyse the results of the ETL pipeline.
+  * __earthquakes-portal-release-1-results.ipynb__ - a Jupyter notebook that analyse the results of the ETL pipeline.
   * __README.md__ - file - project information and instructions on how to use the application.
   * __requirements.txt__ - file - Python libraries used by this application.
 
