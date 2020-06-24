@@ -76,7 +76,7 @@ The following instructions guide you on how to set up the project on your Hadoop
 
 This application is build to run with Hortonworks Data Platform (HDP) 2.6.5, please download HDP [here](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts. However, it can run to every Hadoop environment that
+HDP-2.6.5 comes with Python 2.7 pre-installed; therefore, this Python version is being used for our scripts.
 
 Before we start executing the several phases of the application, it is required to install some Python libraries, to do so run the following:
  ```
