@@ -282,7 +282,8 @@ Therefore, as an introduction to Spark will answer questions like:
 * How many earthquakes there were for each country?
 
 Spark has two major releases Spark and Spark2.
-For question one we use Spark and for question two we use Spark2.
+For question one we use Spark1 systax and for question two we use Spark2 systax.
+
 ```
 cd ../scripts_spark
 spark-submit eq-spark-groupByMangitude.py
