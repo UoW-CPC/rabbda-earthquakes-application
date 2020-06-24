@@ -27,4 +27,4 @@ create table results
   )
 row format delimited fields terminated by ',';
 
-LOAD DATA INPATH '/YOUR_HDFS_PATH/results.csv' OVERWRITE INTO TABLE results;
+LOAD DATA INPATH '/user/maria_dev/results.csv' OVERWRITE INTO TABLE results;
