@@ -1,15 +1,16 @@
 
 #
-hdfs-path: '/app'
+hdfs-path: '/user/maria_dev'
 #
 download-list-of-years:
   - 2010
+  - 2015
 #
 #download-group-of-years:
 #  - 2011
 #  - 2014
 #
-download-magnitude-over: 8
+download-magnitude-over: 5
 #
 #download-again-historical-data: True
 

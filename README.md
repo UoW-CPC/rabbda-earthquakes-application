@@ -111,7 +111,7 @@ __Tip:__ changing directories with terminal commands.
  ```
  #### Now we are ready to go through the various phases:
 
- #### Edit the configuration file:
+ #### Edit the configuration file
 Move to the conf folder to edit the configuration file:
 ```
 cd conf
@@ -122,18 +122,24 @@ cat earthquakes-application.yaml
 ```
 Edit configuration file according to your requirements. This files allows you to define 6 parameters:
 1. hdfs-path: set the path that application's data will be stored.
-2. download-list-of-years: 
-3.
-4.
-5.
-6.
+2. download-list-of-years: define a list of years to request, e.g. 2010,2015,2016.
+3. download-group-of-years: define a range of years to request, e.g. 2010 to 2012.
+__Important:__ You must define only one of the two above options.
+4. download-magnitude-over: set magnitude values to request.
+5. download-again-historical-data: in case you want to request again earthquakes data that have been request in the past you mus set this value to True.
+6. hive-drop-all-tables: clean all hive tables before executing the ETL pipeline [experimental - not fully implemented].
 
-
-Move back to the parent folder:
+Having set the required values in the confugiration file move back to the parent folder:
 ```
 cd..
 ```
-#### run
+#### Start the application
+
+```
+cd scripts/application
+python start_application
+```
+
 
 ####logs
 
