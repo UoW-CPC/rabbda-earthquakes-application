@@ -137,7 +137,7 @@ cd..
 
 ```
 cd scripts/application
-python start_application
+python start_application.py
 ```
 
 
