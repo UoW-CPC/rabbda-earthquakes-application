@@ -21,7 +21,9 @@ For more information, please review RABBDA [here](https://rabbda.readthedocs.io/
 This release extends Release-0 by creating a workflow  that automates the various steps, from data  acquisition to Hive queries.
 Also, introduces some advanced concepts of Hive.
 
-From architecture's point of view, the application does the same as release-0, utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data from different sources, and provides answers to complex research questions.
+From architecture's point of view, the application does the same as release-0,
+utilises a Hive ETL pipeline (Extract-Transform-Load) that joins data from different sources,
+and provides answers to complex research questions.
 
 The following steps are being automated by the application:
  1. Data acquisition: Request data from a Rest API.
@@ -33,6 +35,10 @@ The following steps are being automated by the application:
  Additionally, you can perform further analysis, like we did in Release-0.
  In this release we do this through a Jupyter Notebook.
 
+To more detail, the application performs the above 5 steps by utilising thrree components:
+ 1. orchestration component - read the configuration files and passes control to the other components to perform its tasks.
+ 2. earthquakes-history component - takes as input parameters like years and magnitude to perform steps 1-3.
+ 3. hive-ETl-pipeline component -  takes as input parameters like HDFS path to perform step 4-5.
 
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
@@ -66,10 +72,10 @@ The following instructions guide you on how to set up the project on your Hadoop
  ```
  ls
  ```
- There you can see four folders and three files:
+ There you can see four folders and four files:
   * __conf__ - folder - contains application's configuration file.
-  * __data__ - folder - contains datasets related to the application.
-    * __earthquakes-history__ - folder - contains earthquakes related data.
+  * __data__ - folder - contains all application's data.
+    * __earthquakes-history__ - folder - contains earthquakes related data, and .
     * __hive-etl-pipeline__ - folder - contains datasets for cities and seismograph station.
   * __logs__ - folder - contains application logs.
   * __scripts__ - folder - contains the scripts for the various application components.
