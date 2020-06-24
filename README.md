@@ -310,6 +310,11 @@ Tableau is a proprietary tool and requires a license to use.
 Folder sample_tableau has a Tableau file that can be use as an example.
 Sample visualisation in Tableau.
 
+ #### Demo Completion
+
+ You have now completed the demo, please review the presentation 'earthquakes-portal-release-0.pptx' to understand the architecture, functionality and limitations.
+
+ As a next step you can try the release-1 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-1.0). Release-1 allows automates the  above process and allows you choose several parameters in a configuration file.
 
  ##### Clean Data
 
@@ -317,11 +322,3 @@ Sample visualisation in Tableau.
 ```
 hive -e 'DROP DATABASE IF EXISTS earthquakes CASCADE;'
 ```
-
- ##### Demo Completion
-
- You have now completed the demo, please review the presentation 'earthquakes-portal-release-0.pptx' to understand the architecture, functionality and limitations.
-
- As a next step you can try the release-1 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-1.0). Release-1 allows automates the  above process and allows you choose several parameters in a configuration file.
-
-
