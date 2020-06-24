@@ -126,6 +126,7 @@ Edit configuration file according to your requirements. This files allows you to
 3. download-group-of-years: define a range of years to request, e.g. 2010 to 2012.
 
 __Important:__ You must define only one of the two above options.
+
 4. download-magnitude-over: set magnitude values to request.
 5. download-again-historical-data: in case you want to request again earthquakes data that have been request in the past you mus set this value to True.
 6. hive-drop-all-tables: clean all hive tables before executing the ETL pipeline [experimental - not fully implemented].
