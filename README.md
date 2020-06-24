@@ -124,12 +124,11 @@ Edit configuration file according to your requirements. This files allows you to
 1. hdfs-path: set the path that application's data will be stored.
 2. download-list-of-years: define a list of years to request, e.g. 2010,2015,2016.
 3. download-group-of-years: define a range of years to request, e.g. 2010 to 2012.
-
-__Important:__ You must define only one of the two above options.
-
 4. download-magnitude-over: set magnitude values to request.
 5. download-again-historical-data: in case you want to request again earthquakes data that have been request in the past you mus set this value to True.
 6. hive-drop-all-tables: clean all hive tables before executing the ETL pipeline [experimental - not fully implemented].
+
+__Important:__ You must define only one of the options 2 and 3.
 
 Having set the required values in the confugiration file move back to the parent folder:
 ```
