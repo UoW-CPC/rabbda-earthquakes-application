@@ -36,9 +36,9 @@ The following steps are being automated by the application:
  In this release we do this through a Jupyter Notebook.
 
 To more detail, the application performs the above 5 steps by utilising thrree components:
- 1. orchestration component - read the configuration files and passes control to the other components to perform its tasks.
- 2. earthquakes-history component - takes as input parameters like years and magnitude to perform steps 1-3.
- 3. hive-ETl-pipeline component -  takes as input parameters like HDFS path to perform step 4-5.
+ 1. __orchestration component__ - read the configuration files and passes control to the other components to perform its tasks.
+ 2. __earthquakes-history component__ - takes as input parameters like years and magnitude to perform steps 1-3.
+ 3. __hive-ETl-pipeline component__ -  takes as input parameters like HDFS path to perform step 4-5.
 
 This demonstration utilises earthquakes data, source: [USGS science for a changing world](https://earthquake.usgs.gov).
 
