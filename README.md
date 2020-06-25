@@ -40,6 +40,7 @@ This is a step-by-step guide that describes all application phases:
     * Advanced research questions with Hive.
     * Data visualisations with Tableau.
 
+You can review Release-0 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-0.0)
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
@@ -65,5 +66,7 @@ To more detail, the application performs the above 5 steps by utilising thrree c
 
  Additionally, you can perform further analysis, like we did in Release-0.
  In this release we do this through a Jupyter Notebook.
+
+You can review Release-1 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-1.0)
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Rest API, Python, Jupyter Notebooks.
