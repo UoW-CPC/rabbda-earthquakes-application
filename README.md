@@ -70,3 +70,8 @@ To more detail, the application performs the above 5 steps by utilising thrree c
 You can review Release-1 [here](https://github.com/UoW-CPC/rabbda-earthquakes-portal/tree/release-1.0)
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Rest API, Python, Jupyter Notebooks.
+
+ ### Further development
+As a next step you can try extending this application by importing real time data to your system.
+1. To see how you can import earthquakes real-time data to HDFS by utilising Apache Flume review [here](https://github.com/UoW-CPC/rabbda-earthquakes-realtime).
+2. To see how you can import real-time twitter data by utilising Apache Kafka review [here](https://github.com/UoW-CPC/rabbda-kafka-twitter).
