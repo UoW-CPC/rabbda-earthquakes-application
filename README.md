@@ -78,7 +78,7 @@ As a next step you can try extending this application by importing real time dat
 
  ### Useful sources
  In case you want to experiment with the two components __arthquakes-history__ and __hive-etl-pipeline__, check the following links:
- * [arthquakes-history](https://github.com/UoW-CPC/rabbda-earthquakes-history)
+ * [earthquakes-history](https://github.com/UoW-CPC/rabbda-earthquakes-history)
  * [hive-etl-pipeline](https://github.com/UoW-CPC/rabbda-hive-etl-pipeline)
 
 __Notice:__ The above reposiroties present a slightly different implementation than the ones we used in releases 0 and 1.
