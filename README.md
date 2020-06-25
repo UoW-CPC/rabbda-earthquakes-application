@@ -21,7 +21,9 @@ The project objective is to provide students and practitioners access to Big Dat
 RABBDA is the first attempt to merge a Science Gateway with a KREL (knowledge repository and learning), called [SMARTEST](https://smartest-repo.herokuapp.com/) to facilitate the comprehension of the various aspects of the portal.
 For more information, please review RABBDA [here](https://rabbda.readthedocs.io/).
 
-### Release:0.0
+### Releases
+
+#### Release:0.0
 This release introduces technologies like Rest APIs, Hadoop HDFS, Hive, Spark, and Tableau.
 Additionally, Shell and Python scripts are being used to perform several tasks, e.g. data acquisition and preparation.
 
@@ -41,7 +43,7 @@ This is a step-by-step guide that describes all application phases:
 
  __Keywords:__ Big Data, Hadoop, HDFS, Hive, Spark, Rest API, Tableau, Python, Shell.
 
- ### Release:1.0
+ #### Release:1.0
 This release extends Release-0 by creating a workflow  that automates the various steps, from data  acquisition to Hive queries.
 Also, introduces some advanced concepts of Hive.
 
