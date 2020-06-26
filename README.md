@@ -154,7 +154,7 @@ plus a database from which the pipeline decides if it must create the Hive datab
 
 __Warning:__ This process is time consuming and resource intensive. Therefore be patient and be careful how many data you want to process.
 
-#### Data visualisations with Tableau
+#### Data visualisations with Jupyter
 An important aspect of every big data solution is the visualisation of the data and the results of each analysis process.
 
 Jupyter Notebooks is a well established data  analytics solutions that allow us to perform advanced analytics and create graphs, visualisations.
